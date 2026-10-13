@@ -1,0 +1,4 @@
+# Vercel publica solo la web: estas herramientas son para la computadora local.
+tools/
+serve.py
+README.md
