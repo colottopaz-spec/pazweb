@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paz Colotto</title>
+  <meta name="description" content="Paz Colotto — fotografía, dirección y escritura.">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- Tailwind (CDN). Para producción conviene compilarlo con el CLI de Tailwind. -->
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <!-- ?v=N evita que el navegador use una versión vieja guardada: subir el número en cada cambio -->
+  <link rel="stylesheet" href="css/styles.css?v=18">
+</head>
+
+<body class="font-sans antialiased">
+  <a href="#view" class="skip-link" data-i18n="skip">Saltar al contenido</a>
+
+  <div id="site">
+    <!-- ================================================================
+         NAVEGACIÓN FIJA — una sola línea, tres zonas
+         izquierda: Paz Colotto
+         centro:    diario · proyectos · calle · video · escritos
+         derecha:   sobre mi · ES / EN
+         ================================================================ -->
+    <header class="site-header" id="site-header">
+      <nav class="nav" data-i18n-aria="nav.label" aria-label="Navegación principal">
+        <div class="nav-left">
+          <a href="#/" class="brand" data-nav="inicio">Paz Colotto</a>
+        </div>
+
+        <ul class="nav-center" role="list">
+          <li class="nav-group" data-group="diario">
+            <a href="#/diario" class="nav-link" data-nav="diario" data-i18n="nav.diario">diario</a>
+            <span class="nav-subs">
+              <a href="#/diario/viajes" class="nav-sub" data-nav-sub="diario/viajes" data-i18n="nav.viajes">viajes</a><span class="nav-sep" aria-hidden="true">/</span><a href="#/diario/personas" class="nav-sub" data-nav-sub="diario/personas" data-i18n="nav.personas">personas</a>
+            </span>
+          </li>
+          <li class="nav-group" data-group="proyectos">
+            <a href="#/proyectos" class="nav-link" data-nav="proyectos" data-i18n="nav.proyectos">proyectos</a>
+            <span class="nav-subs">
+              <a href="#/proyectos/sociales" class="nav-sub" data-nav-sub="proyectos/sociales" data-i18n="nav.sociales">sociales</a><span class="nav-sep" aria-hidden="true">/</span><a href="#/proyectos/marcas" class="nav-sub" data-nav-sub="proyectos/marcas" data-i18n="nav.marcas">marcas</a>
+            </span>
+          </li>
+          <li><a href="#/calle" class="nav-link" data-nav="calle" data-i18n="nav.calle">calle</a></li>
+          <li><a href="#/video" class="nav-link" data-nav="video" data-i18n="nav.video">video</a></li>
+          <li><a href="#/escritos" class="nav-link" data-nav="escritos" data-i18n="nav.escritos">escritos</a></li>
+        </ul>
+
+        <div class="nav-right">
+          <a href="#/sobre-mi" class="nav-link nav-about" data-nav="sobre-mi" data-i18n="nav.sobre-mi">sobre mi</a>
+          <div class="lang" id="lang-switch" role="group" data-i18n-aria="lang.label" aria-label="Idioma"></div>
+          <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="mobile-menu" data-i18n="menu">menú</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Menú móvil -->
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <ul role="list" class="mobile-list">
+        <li><a href="#/diario" data-nav="diario" data-i18n="nav.diario">diario</a>
+          <span class="mobile-subs"><a href="#/diario/viajes" data-nav-sub="diario/viajes" data-i18n="nav.viajes">viajes</a> / <a href="#/diario/personas" data-nav-sub="diario/personas" data-i18n="nav.personas">personas</a></span></li>
+        <li><a href="#/proyectos" data-nav="proyectos" data-i18n="nav.proyectos">proyectos</a>
+          <span class="mobile-subs"><a href="#/proyectos/sociales" data-nav-sub="proyectos/sociales" data-i18n="nav.sociales">sociales</a> / <a href="#/proyectos/marcas" data-nav-sub="proyectos/marcas" data-i18n="nav.marcas">marcas</a></span></li>
+        <li><a href="#/calle" data-nav="calle" data-i18n="nav.calle">calle</a></li>
+        <li><a href="#/video" data-nav="video" data-i18n="nav.video">video</a></li>
+        <li><a href="#/escritos" data-nav="escritos" data-i18n="nav.escritos">escritos</a></li>
+        <li><a href="#/sobre-mi" data-nav="sobre-mi" data-i18n="nav.sobre-mi">sobre mi</a></li>
+      </ul>
+    </div>
+
+    <!-- Contenido: lo renderiza js/app.js según la ruta (#/, #/diario/viajes, #/video, …) -->
+    <main id="view" class="view" tabindex="-1"></main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Paz Colotto</p>
+      <p class="footer-links" id="footer-links"></p>
+    </footer>
+  </div>
+
+  <!-- ================================================================
+       VISTA DE PROYECTO — carrusel + créditos en una línea
+       ================================================================ -->
+  <div id="lightbox" class="modal pv" role="dialog" aria-modal="true" aria-labelledby="lb-title" hidden>
+    <div class="pv-bar">
+      <span id="lb-counter" class="pv-counter" aria-live="polite"></span>
+      <button type="button" class="lb-btn" data-close data-i18n="close">cerrar</button>
+    </div>
+
+    <div class="lb-stage" id="lb-stage">
+      <figure class="lb-figure">
+        <img id="lb-img" alt="" decoding="async">
+        <video id="lb-video" playsinline controls hidden></video>
+      </figure>
+      <div class="lb-embed" id="lb-embed" hidden></div>
+      <button type="button" class="lb-hit lb-hit--prev" data-lb="prev" data-i18n-aria="prev" aria-label="anterior"></button>
+      <button type="button" class="lb-hit lb-hit--next" data-lb="next" data-i18n-aria="next" aria-label="siguiente"></button>
+    </div>
+
+    <div class="pv-text" id="lb-text" hidden></div>
+
+    <div class="pv-foot">
+      <p class="credit-line" id="lb-info"></p>
+      <div class="pv-arrows">
+        <button type="button" class="lb-btn" data-lb="prev" data-i18n-aria="prev" aria-label="anterior">←</button>
+        <button type="button" class="lb-btn" data-lb="next" data-i18n-aria="next" aria-label="siguiente">→</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       VIDEO — reproductor + créditos discretos debajo
+       ================================================================ -->
+  <div id="videobox" class="modal vb" role="dialog" aria-modal="true" aria-labelledby="vb-title" hidden>
+    <div class="vb-bar">
+      <span></span>
+      <button type="button" class="lb-btn" data-close data-i18n="close">cerrar</button>
+    </div>
+    <div class="vb-scroll">
+      <div class="vb-inner">
+        <div class="vb-player" id="vb-player"></div>
+        <div class="vb-credits" id="vb-info"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================================================
+       ESCRITOS — lector
+       ================================================================ -->
+  <div id="writingbox" class="modal wb" role="dialog" aria-modal="true" aria-labelledby="wb-title" hidden>
+    <div class="wb-bar">
+      <span></span>
+      <button type="button" class="lb-btn" data-close data-i18n="close">cerrar</button>
+    </div>
+    <div class="wb-scroll" id="wb-scroll">
+      <article class="wb-paper" id="wb-content"></article>
+    </div>
+  </div>
+
+  <script src="js/content.js?v=18"></script>
+  <script src="js/data.js?v=18"></script>
+  <script src="js/i18n.js?v=18"></script>
+  <script src="js/app.js?v=18"></script>
+</body>
+</html>

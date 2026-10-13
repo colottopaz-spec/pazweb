@@ -1,0 +1,15 @@
+# Originales (varios GB, archivos de más de 100 MB): no van al repo.
+# La web usa las versiones livianas de assets/, que genera tools/build.py.
+PAGINA WEB_/
+PAGINA WEB_*.zip
+*.zip
+
+# Configuración local
+.claude/
+
+# Sistema / Python
+.DS_Store
+Thumbs.db
+desktop.ini
+__pycache__/
+*.pyc
