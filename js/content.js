@@ -6107,10 +6107,10 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/calle/hokori/portadas/010.jpg",
+    "src": "assets/calle/hokori/portadas/016.jpg",
     "project": "hokori",
-    "index": 12,
-    "file": "hokori_13.jpg",
+    "index": 34,
+    "file": "orgullo bostero.jpg",
     "w": 1100,
     "h": 733
    },
@@ -6161,10 +6161,10 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/calle/hokori/portadas/016.jpg",
+    "src": "assets/calle/hokori/portadas/010.jpg",
     "project": "hokori",
-    "index": 34,
-    "file": "orgullo bostero.jpg",
+    "index": 12,
+    "file": "hokori_13.jpg",
     "w": 1100,
     "h": 733
    },
