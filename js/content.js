@@ -3291,6 +3291,13 @@ window.SITE_CONTENT = {
     {
      "type": "image",
      "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/016.jpg",
+     "file": "KABUKI&BENITEZ_BS x Paz Colotto86.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/017.jpg",
      "file": "KABUKI&BENITEZ_BS x Paz Colotto89.jpg",
      "w": 2000,
      "h": 1333
@@ -3849,147 +3856,6 @@ window.SITE_CONTENT = {
    ]
   },
   {
-   "slug": "finvoi",
-   "section": "proyectos",
-   "sub": "marcas",
-   "title": "FINVOI",
-   "items": [
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/001.jpg",
-     "file": "FINVOI-22.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/002.jpg",
-     "file": "FINVOI-23.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/003.jpg",
-     "file": "FINVOI-24.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/004.jpg",
-     "file": "FINVOI-25.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/005.jpg",
-     "file": "FINVOI-28.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/006.jpg",
-     "file": "FINVOI-29.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/007.jpg",
-     "file": "FINVOI-31.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/008.jpg",
-     "file": "FINVOI-40.jpg",
-     "w": 2000,
-     "h": 1333
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/009.jpg",
-     "file": "FINVOI-41.jpg",
-     "w": 2000,
-     "h": 1333
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/010.jpg",
-     "file": "FINVOI-43.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/011.jpg",
-     "file": "FINVOI-47.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/012.jpg",
-     "file": "FINVOI-49.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/013.jpg",
-     "file": "FINVOI-50.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/014.jpg",
-     "file": "FINVOI-51.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/015.jpg",
-     "file": "FINVOI-52.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/016.jpg",
-     "file": "FINVOI-53.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/017.jpg",
-     "file": "FINVOI-86.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/018.jpg",
-     "file": "FINVOI-87.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/019.jpg",
-     "file": "FINVOI-91.jpg",
-     "w": 2000,
-     "h": 1123
-    }
-   ]
-  },
-  {
    "slug": "make-up-supplies",
    "section": "proyectos",
    "sub": "marcas",
@@ -4185,6 +4051,42 @@ window.SITE_CONTENT = {
      "file": "d7095bc8-780c-4397-9729-33ce04ab9d00_rw_1920.jpg",
      "w": 2000,
      "h": 1333
+    }
+   ]
+  },
+  {
+   "slug": "ozone-ecommerce",
+   "section": "proyectos",
+   "sub": "marcas",
+   "title": "ozone - ecommerce",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/001.jpg",
+     "file": "Mesa de trabajo 4.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/002.jpg",
+     "file": "Mesa de trabajo 12.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/003.jpg",
+     "file": "Mesa de trabajo 17.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/004.jpg",
+     "file": "Mesa de trabajo 21.jpg",
+     "w": 2000,
+     "h": 2000
     }
    ]
   },
@@ -5665,15 +5567,6 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/003.jpg",
-    "project": "lisandro-alonso",
-    "index": 1,
-    "file": "02_Prensa_Web.jpg",
-    "w": 1100,
-    "h": 618
-   },
-   {
-    "type": "image",
     "src": "assets/proyectos/sociales/jua-y-gusi/portadas/004.jpg",
     "project": "jua-y-gusi",
     "index": 2,
@@ -5923,6 +5816,15 @@ window.SITE_CONTENT = {
     "file": "KABUKI_RAMIREZ96.jpg",
     "w": 618,
     "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/portadas/032.jpg",
+    "project": "kabuki-y-benitez-emilse",
+    "index": 15,
+    "file": "KABUKI&BENITEZ_BS x Paz Colotto86.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/marcas": [
@@ -5933,7 +5835,12 @@ window.SITE_CONTENT = {
     "index": 0,
     "file": "01.jpg",
     "w": 1100,
-    "h": 733
+    "h": 733,
+    "banner": {
+     "src": "assets/proyectos/marcas/parlle/portadas/banner.jpg",
+     "w": 2000,
+     "h": 963
+    }
    },
    {
     "type": "image",
@@ -6144,33 +6051,6 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/025.jpg",
-    "project": "finvoi",
-    "index": 0,
-    "file": "FINVOI-22.jpg",
-    "w": 1100,
-    "h": 618
-   },
-   {
-    "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/026.jpg",
-    "project": "finvoi",
-    "index": 7,
-    "file": "FINVOI-40.jpg",
-    "w": 1100,
-    "h": 733
-   },
-   {
-    "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/027.jpg",
-    "project": "finvoi",
-    "index": 11,
-    "file": "FINVOI-49.jpg",
-    "w": 1100,
-    "h": 618
-   },
-   {
-    "type": "image",
     "src": "assets/proyectos/marcas/make-up-supplies/portadas/028.jpg",
     "project": "make-up-supplies",
     "index": 0,
@@ -6202,6 +6082,15 @@ window.SITE_CONTENT = {
     "project": "make-up-supplies",
     "index": 1,
     "file": "IMG_0059-2.jpg",
+    "w": 1100,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/ozone-ecommerce/portadas/032.jpg",
+    "project": "ozone-ecommerce",
+    "index": 3,
+    "file": "Mesa de trabajo 21.jpg",
     "w": 1100,
     "h": 1100
    }

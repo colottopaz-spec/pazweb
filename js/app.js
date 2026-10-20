@@ -396,6 +396,11 @@
     const limit = limitFor(route);
     state.cols = cols;
 
+    // Banner (CONFIG.WALL_BANNER): una portada sale de la grilla y va abajo de todo, a todo el ancho
+    const bannerKey = (CONFIG.WALL_BANNER || {})[route.sub ? `${route.section}/${route.sub}` : route.section];
+    const banner = bannerKey ? list.find((c) => `${c.project}/${c.file}` === bannerKey) : null;
+    if (banner) list = list.filter((c) => c !== banner);
+
     // Si hay GRID_ORDER para esta sección ('seccion/sub' o 'seccion' para el muro mixto),
     // ordenar la lista según ese orden
     const go = CONFIG.GRID_ORDER || {};
@@ -413,7 +418,14 @@
 
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes
     return `<div class="wall-grid">${columns.map((col) =>
-      `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>`;
+      `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>` +
+      (banner ? bannerHTML(banner) : '');
+  }
+
+  // Misma tarjeta que la grilla, a todo el ancho; usa la imagen "banner" de la portada si existe
+  function bannerHTML(c) {
+    const img = c.banner ? { ...c, type: 'image', src: c.banner.src, w: c.banner.w, h: c.banner.h } : c;
+    return `<div class="wall-banner">${coverCard(img, 99)}</div>`;
   }
 
 

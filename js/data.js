@@ -36,7 +36,7 @@
        - Para todos los muros: un número, por ejemplo 6
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
-    SECTION_LIMIT: {},
+    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 15, 'proyectos/marcas': 9 },
 
     /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
        (nombre, créditos, año y texto, con los separadores) tiene hasta este número
@@ -44,6 +44,12 @@
        queda el botón "info" con el desplegable. 95 caracteres a 18px entran en una
        línea en desktop (desde 1024px) y en hasta cuatro renglones en un celular de 375px. */
     PIE_MAX_CHARS: 95,
+
+    /* Banner: una portada del muro sale de la grilla y va abajo de todo, a todo el
+       ancho. Muro → 'slug/archivo original' de la portada. Si la portada tiene
+       "banner" en content.js (imagen horizontal más grande) se usa esa imagen.
+       No cuenta para SECTION_LIMIT. */
+    WALL_BANNER: { 'proyectos/marcas': 'parlle/01.jpg' },
   };
 
   /* ==========================================================================
@@ -120,10 +126,6 @@
       title: 'maria t', year: 2023,
       text: { es: ['Dirección creativa, edición y fotografía. Editorial y fotoproducto.'], en: ['Creative direction, editing, and photography. Editorial and product photography.'] }
     },
-    'finvoi': {
-      title: 'finvoi', year: 2025,
-      text: { es: ['Cobertura fotográfica del evento de presentación de la app de financiamiento para empresas Finvoi.'], en: ['Photographic coverage of the launch event for the business financing app Finvoi.'] }
-    },
     'astrea': {
       title: 'astrea', year: 2025,
       text: { es: ['Fotografía y edición para Astrea, artista de tango venezolana radicada en Buenos Aires. Proyecto musical inspirado en el tango porteño.'], en: ['Photography and editing for Astrea, Venezuelan tango artist based in Buenos Aires. Musical project inspired by tango.'] }
@@ -132,6 +134,7 @@
       title: 'ozone',
       text: { es: ['Dirección creativa, edición y fotografía. Fotoproducto para e-commerce. Ozone es una marca de cosmética especializada en la realización de protectores solares físicos ecológicos y orgánicos hechos en Argentina.'], en: ['Creative direction, editing, and photography. E-commerce product photography. Ozone is an eco-friendly organic sunscreen brand made in Argentina.'] }
     },
+    'ozone-ecommerce': { title: 'ozone ecommerce' },
     'penoucos': {
       title: 'penoucos', year: 2024,
       text: { es: ['Fotografía para el artista Gonzalo Penoucos.'], en: ['Photography for the artist Gonzalo Penoucos.'] }
@@ -238,7 +241,6 @@
   const FEATURED = {
     'proyectos/sociales': [
       '16jua&gusi_imprimir01-142.jpg',
-      '02_Prensa_Web.jpg',
       'BAFWEEK_PAZ COLOTTO-1.jpg',
     ],
   };
@@ -255,7 +257,7 @@
   const GRID_ORDER = {
     // Proyectos (muro mixto: sociales + marcas)
     'proyectos': [
-      // Lámina, en orden de lectura
+      // Se ven 15 (CONFIG.SECTION_LIMIT): las 9 de la lámina y 6 elegidas por variedad
       'bafweek/BAFWEEK_PAZ COLOTTO34.jpg',
       'jua-y-gusi/16jua&gusi_imprimir01-142.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO121.jpg',
@@ -264,10 +266,15 @@
       'jua-y-gusi/13_jua&gusi_imprimir01-97.jpg',
       'astrea/astrea_4.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ144.jpg',
-      // Resto del muro (no está en la lámina), en el orden en que se veía
-      'lisandro-alonso/02_Prensa_Web.jpg',
-      'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
+      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto86.jpg',
       'maria-t/10.jpg',
+      'clabakery/clabakery5.jpg',
+      'indio-solari/28.jpg',
+      'ozone/9545cb71-6111-4cdd-80a5-6eb8c51ef7d9_rw_1920.jpg',
+      'charly/17.jpg',
+      'mile-quince-anos/IMG_9795.jpg',
+      // Resto: no se ve mientras esté el límite
+      'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
       'parlle/01.jpg',
       'indio-solari/1.jpg',
       'astrea/astrea_1.jpg',
@@ -276,9 +283,7 @@
       'maria-t/17.jpg',
       'parlle/02.jpg',
       'mile-quince-anos/IMG_0034.jpg',
-      'clabakery/clabakery5.jpg',
       'penoucos/penoucos5.jpg',
-      'finvoi/FINVOI-22.jpg',
       'ozone/3c2c8c97-1122-47b2-be06-6bad5d2affb9_rw_1920.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/Kabuki & Ramirez - Paz Colotto-205.jpg',
       'indio-solari/7.jpg',
@@ -286,11 +291,8 @@
       'astrea/astrea_3.jpg',
       'parlle/05a.jpg',
       'clabakery/clabakery6.jpg',
-      'finvoi/FINVOI-40.jpg',
-      'mile-quince-anos/IMG_9795.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ44.jpg',
       'jua-y-gusi/04jua&gusi_imprimir01-43.jpg',
-      'ozone/9545cb71-6111-4cdd-80a5-6eb8c51ef7d9_rw_1920.jpg',
       'maria-t/GOLDEN C.jpg',
       'parlle/07.jpg',
       'charly/01.jpg',
@@ -305,25 +307,22 @@
       'ozone/d7095bc8-780c-4397-9729-33ce04ab9d00_rw_1920.jpg',
       'maria-t/LUXTAN 2.jpg',
       'ficuba-lab/FICUBA LAB-13.jpg',
-      'finvoi/FINVOI-49.jpg',
       'astrea/astrea_9.jpg',
-      'charly/17.jpg',
-      'indio-solari/28.jpg',
       'irrefrenable/_MG_8188.jpg',
       'make-up-supplies/IMG_0027.jpg',
       'clabakery/clabakery8.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto51.jpg',
-      // Portadas agregadas para otra lámina de esta sección
       'lisandro-alonso/01_Prensa_Web.jpg',
       'irrefrenable/_MG_8158.jpg',
       'jua-y-gusi/06jua&gusi_imprimir01-70.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
       'clabakery/clabakery9.jpg',
       'make-up-supplies/IMG_0059-2.jpg',
+      'ozone-ecommerce/Mesa de trabajo 21.jpg',
     ],
     // Proyectos > Sociales
     'proyectos/sociales': [
-      // Lámina, en orden de lectura
+      // Se ven 15 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba) y 5 elegidas por variedad
       'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
       'lisandro-alonso/01_Prensa_Web.jpg',
       'charly/17.jpg',
@@ -334,9 +333,12 @@
       'mile-quince-anos/IMG_9795.jpg',
       'indio-solari/13.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
-      // Resto del muro (no está en la lámina), en el orden en que se veía
+      'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
+      'mile-quince-anos/IMG_0034.jpg',
       'jua-y-gusi/16jua&gusi_imprimir01-142.jpg',
-      'lisandro-alonso/02_Prensa_Web.jpg',
+      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto86.jpg',
+      'indio-solari/28.jpg',
+      // Resto: no se ve mientras esté el límite
       'bafweek/BAFWEEK_PAZ COLOTTO34.jpg',
       'indio-solari/7.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto43.jpg',
@@ -344,38 +346,33 @@
       'indio-solari/1.jpg',
       'charly/01.jpg',
       'jua-y-gusi/07jua&gusi_imprimir01-71.jpg',
-      'indio-solari/28.jpg',
       'irrefrenable/_MG_8139.jpg',
       'irrefrenable/_MG_8188.jpg',
-      'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
-      'mile-quince-anos/IMG_0034.jpg',
       'mile-quince-anos/IMG_9860.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/Kabuki & Ramirez - Paz Colotto-205.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto51.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ44.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ144.jpg',
-      // Portadas agregadas para otra lámina de esta sección
       'bafweek/BAFWEEK_PAZ COLOTTO121.jpg',
       'jua-y-gusi/13_jua&gusi_imprimir01-97.jpg',
     ],
     // Proyectos > Marcas
     'proyectos/marcas': [
-      // Lámina, en orden de lectura
+      // Se ven 9 (CONFIG.SECTION_LIMIT): las de la lámina, con astrea en lugar del retrato de fic.uba lab (es de Sociales). Parlle va aparte, abajo, como banner (CONFIG.WALL_BANNER)
       'maria-t/10.jpg',
       'ozone/9545cb71-6111-4cdd-80a5-6eb8c51ef7d9_rw_1920.jpg',
+      'ozone-ecommerce/Mesa de trabajo 21.jpg',
       'maria-t/EQUILIBRIUM.jpg',
       'clabakery/clabakery5.jpg',
       'clabakery/clabakery9.jpg',
       'penoucos/penoucos8.jpg',
       'make-up-supplies/IMG_0059-2.jpg',
-      'parlle/01.jpg',
-      // Resto del muro (no está en la lámina), en el orden en que se veía
       'astrea/astrea_1.jpg',
+      // Resto: no se ve mientras esté el límite
       'maria-t/GOLDEN C.jpg',
       'maria-t/LUXTAN 2.jpg',
       'clabakery/clabakery6.jpg',
       'penoucos/penoucos2.jpg',
-      'finvoi/FINVOI-22.jpg',
       'parlle/02.jpg',
       'ozone/3c2c8c97-1122-47b2-be06-6bad5d2affb9_rw_1920.jpg',
       'parlle/05a.jpg',
@@ -389,10 +386,7 @@
       'ozone/d7095bc8-780c-4397-9729-33ce04ab9d00_rw_1920.jpg',
       'penoucos/penoucos5.jpg',
       'penoucos/penoucos6.jpg',
-      'finvoi/FINVOI-40.jpg',
-      'finvoi/FINVOI-49.jpg',
       'make-up-supplies/IMG_0027.jpg',
-      // Portadas agregadas para otra lámina de esta sección
       'astrea/astrea_4.jpg',
     ],
     // Diario (muro mixto: viajes + personas)
