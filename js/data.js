@@ -36,7 +36,7 @@
        - Para todos los muros: un número, por ejemplo 6
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
-    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 16, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
+    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 15, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
 
     /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
        (nombre, créditos, año y texto, con los separadores) tiene hasta este número
@@ -321,10 +321,11 @@
       'ozone-ecommerce/Mesa de trabajo 21.jpg',
       'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
       'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
+      'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ153.jpg',
     ],
     // Proyectos > Sociales
     'proyectos/sociales': [
-      // Se ven 16 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba) y 6 más; a 4 columnas son 4 hileras completas
+      // Se ven 15 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba; la vertical de maquillaje cambiada por la 012 horizontal de kabuki & ramírez) y 5 más; a 3 columnas son 5 filas completas
       'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
       'lisandro-alonso/01_Prensa_Web.jpg',
       'charly/17.jpg',
@@ -334,14 +335,15 @@
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto15.jpg',
       'mile-quince-anos/IMG_9795.jpg',
       'indio-solari/13.jpg',
-      'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
+      'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ153.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
-      'mile-quince-anos/IMG_0034.jpg',
       'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
       'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto86.jpg',
       'indio-solari/28.jpg',
       // Resto: no se ve mientras esté el límite
+      'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
+      'mile-quince-anos/IMG_0034.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO34.jpg',
       'indio-solari/7.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto43.jpg',

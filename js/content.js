@@ -5843,6 +5843,15 @@ window.SITE_CONTENT = {
     "file": "15jua&gusi_imprimir01-227.jpg",
     "w": 1100,
     "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-ramirez-de-negro-y-designers/portadas/035.jpg",
+    "project": "kabuki-y-ramirez-de-negro-y-designers",
+    "index": 11,
+    "file": "KABUKI_RAMIREZ153.jpg",
+    "w": 1100,
+    "h": 618
    }
   ],
   "proyectos/marcas": [
