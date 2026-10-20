@@ -280,6 +280,14 @@
     return subs.flatMap((s) => covers[`${section}/${s}`] || []);
   }
 
+  // Límite opcional de portadas por muro (CONFIG.SECTION_LIMIT en js/data.js):
+  // un número para todos los muros u { 'seccion/sub': N, 'seccion': N }. Sin valor válido, sin límite.
+  function limitFor({ section, sub }) {
+    const cfg = CONFIG.SECTION_LIMIT;
+    const value = typeof cfg === 'number' ? cfg : (cfg || {})[sub ? `${section}/${sub}` : section];
+    return Number.isInteger(value) && value > 0 ? value : Infinity;
+  }
+
   function columnsFor(width) {
     return width < 480 ? 1 : width < 900 ? 2 : width < 1500 ? 3 : 4;
   }
@@ -320,7 +328,7 @@
   //   - repetirse en la misma franja horizontal (otra columna): leve
   //   - tener muchas portadas pendientes: resta, para que no se amontonen al final
   // Dentro de cada proyecto se respeta el orden de la carpeta "portada(s)".
-  function layoutWall(list, seedKey, cols) {
+  function layoutWall(list, seedKey, cols, limit = Infinity) {
     const groups = new Map();
     list.forEach((c) => {
       if (!groups.has(c.project)) groups.set(c.project, []);
@@ -340,14 +348,16 @@
     };
 
     // Destacadas (FEATURED en js/data.js): primeras, de izquierda a derecha
-    const featured = list.filter((c) => c.featured).sort((a, b) => a.featured - b.featured);
+    const featured = list.filter((c) => c.featured).sort((a, b) => a.featured - b.featured).slice(0, limit);
     featured.forEach((f) => {
       const g = groups.get(f.project);
       g.splice(g.findIndex((c) => c.src === f.src), 1);
       place(f, heights.indexOf(Math.min(...heights)));
     });
 
-    for (let placed = featured.length; placed < list.length; placed++) {
+    // Con límite se corta la colocación: queda el principio de la misma grilla
+    const total = Math.min(list.length, limit);
+    for (let placed = featured.length; placed < total; placed++) {
       const k = heights.indexOf(Math.min(...heights));
       const top = heights[k];
       const open = [...groups].filter(([, g]) => g.length);
@@ -383,6 +393,7 @@
     let list = coversFor(route);
     if (!list.length) return `<p class="muted">${esc(t('empty'))}</p>`;
     const cols = columnsFor(window.innerWidth);
+    const limit = limitFor(route);
     state.cols = cols;
 
     // Si hay GRID_ORDER para esta sección, ordenar la lista según ese orden
@@ -396,9 +407,9 @@
         const bi = orderMap.has(b.file) ? orderMap.get(b.file) : gridOrder.length + 1000;
         return ai - bi;
       });
-      columns = layoutFixed(list, cols);
+      columns = layoutFixed(list.slice(0, limit), cols);
     } else {
-      columns = layoutWall(list, sectionKey, cols);
+      columns = layoutWall(list, sectionKey, cols, limit);
     }
 
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes

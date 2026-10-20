@@ -30,7 +30,12 @@
       'se-dice-vulva',                         // 8. Se dice vulva
     ],
 
-    /* Límite opcional de portadas visibles por sección. Ejemplo: { 'proyectos/marcas': 8 } */
+    /* Límite opcional de fotos (portadas) visibles en los muros. Por defecto, sin límite.
+       - Por sección: { 'proyectos/marcas': 8, 'calle': 6, 'diario': 4 }
+         ('diario' y 'proyectos' solos son las vistas que mezclan sus dos subcategorías)
+       - Para todos los muros: un número, por ejemplo 6
+       Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
+       incluidos) y la grilla se arma solo con esas. */
     SECTION_LIMIT: {},
   };
 
@@ -413,10 +418,6 @@
 
   const projectBySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
   const covers = Object.fromEntries(Object.entries(CONTENT.covers).map(([key, list]) => [key, list.map((c) => ({ ...c }))]));
-
-  Object.entries(CONFIG.SECTION_LIMIT).forEach(([key, limit]) => {
-    if (covers[key] && limit > 0) covers[key] = covers[key].slice(0, limit);
-  });
 
   Object.entries(FEATURED).forEach(([key, files]) => {
     files.forEach((file, order) => {
