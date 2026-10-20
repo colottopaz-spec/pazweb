@@ -296,6 +296,12 @@
   // Cada elemento de la lista se coloca en la columna que le corresponde
   // según su posición: pos 0 → col 0, pos 1 → col 1, ... pos N-1 → col N-1,
   // pos N → col 0 (siguiente fila), etc.
+  // Modo de grilla (CONFIG.GRID_MODE): 'uniforme' = todas las tarjetas 3:2 con la foto recortada;
+  // 'mosaico' = cada tarjeta con la proporción de su foto
+  const UNIFORM = CONFIG.GRID_MODE === 'uniforme';
+  const UNIFORM_RATIO = 3 / 2;
+  const cardH = (c) => (UNIFORM ? 1 / UNIFORM_RATIO : c.h / c.w);   // alto de la tarjeta en anchos de columna
+
   function layoutFixed(list, cols) {
     const GAP = 0.06;
     const columns = Array.from({ length: cols }, () => []);
@@ -303,7 +309,7 @@
     list.forEach((c, i) => {
       const k = i % cols;
       const top = heights[k];
-      const h = c.h / c.w;
+      const h = cardH(c);
       columns[k].push({ c, top, bottom: top + h });
       heights[k] = top + h + GAP;
     });
@@ -340,11 +346,13 @@
     const columns = Array.from({ length: cols }, () => []);
     const heights = Array(cols).fill(0);
 
+    const order = [];                                   // orden en que se colocan (lo usa el modo uniforme)
     const place = (c, k) => {
       const top = heights[k];
       const h = c.h / c.w;
       columns[k].push({ c, top, bottom: top + h });
       heights[k] = top + h + GAP;
+      order.push(c);
     };
 
     // Destacadas (FEATURED en js/data.js): primeras, de izquierda a derecha
@@ -385,6 +393,7 @@
       });
       place(best.g.shift(), k);
     }
+    columns.order = order;
     return columns;
   }
 
@@ -414,6 +423,8 @@
       columns = layoutFixed(list.slice(0, limit), cols);
     } else {
       columns = layoutWall(list, sectionKey, cols, limit);
+      // Modo uniforme: el mismo orden del mosaico, repartido fila por fila para que las filas queden alineadas
+      if (UNIFORM) columns = layoutFixed(columns.order, cols);
     }
 
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes
@@ -425,20 +436,24 @@
   // Misma tarjeta que la grilla, a todo el ancho; usa la imagen "banner" de la portada si existe
   function bannerHTML(c) {
     const img = c.banner ? { ...c, type: 'image', src: c.banner.src, w: c.banner.w, h: c.banner.h } : c;
-    return `<div class="wall-banner">${coverCard(img, 99)}</div>`;
+    return `<div class="wall-banner">${coverCard(img, 99, true)}</div>`;
   }
 
 
-  function coverCard(c, top) {
+  // natural: la tarjeta conserva la proporción de la foto aunque el modo sea uniforme (banner)
+  function coverCard(c, top, natural = false) {
     const p = projectBySlug[c.project];
     const title = L(p.title);
+    const uniform = UNIFORM && !natural;
+    const focal = uniform && (CONFIG.FOCAL || {})[`${c.project}/${c.file}`];
+    const pos = focal ? ` style="object-position:${esc(focal)}"` : '';
     const media = c.type === 'video'
-      ? `<video class="vprev" muted loop playsinline preload="none" poster="${esc(c.poster)}" data-src="${esc(c.src)}" aria-hidden="true" tabindex="-1"></video>`
-      : `<img src="${esc(c.src)}" alt="" width="${c.w}" height="${c.h}" loading="${top < 2 ? 'eager' : 'lazy'}" decoding="async">`;
+      ? `<video class="vprev" muted loop playsinline preload="none" poster="${esc(c.poster)}" data-src="${esc(c.src)}" aria-hidden="true" tabindex="-1"${pos}></video>`
+      : `<img src="${esc(c.src)}" alt="" width="${c.w}" height="${c.h}" loading="${top < 2 ? 'eager' : 'lazy'}" decoding="async"${pos}>`;
     return `
       <div class="fade-up" style="--d:${Math.round(Math.min(top, 3) * 150)}ms">
         <button type="button" class="card-btn" data-project="${esc(p.slug)}" data-index="${c.index}" aria-label="${esc(t('open.gallery'))}: ${esc(title)}">
-          <span class="card-media" style="aspect-ratio:${c.w}/${c.h}">
+          <span class="card-media" style="aspect-ratio:${uniform ? '3/2' : `${c.w}/${c.h}`}">
             ${media}
             ${p.section === 'proyectos' ? `<span class="card-name" aria-hidden="true">${esc(title)}</span>` : ''}
           </span>

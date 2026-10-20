@@ -50,6 +50,14 @@
        "banner" en content.js (imagen horizontal más grande) se usa esa imagen.
        No cuenta para SECTION_LIMIT. */
     WALL_BANNER: { 'proyectos/marcas': 'parlle/01.jpg' },
+
+    /* Modo de las grillas (diario, proyectos, calle y sus subsecciones):
+       'uniforme' → todas las tarjetas en 3:2, la foto recortada para llenarla
+                    (object-fit: cover; el punto focal de cada foto está en FOCAL, más abajo).
+                    Las filas quedan alineadas arriba y abajo.
+       'mosaico'  → cada tarjeta con la proporción de su foto, sin recorte.
+       El carrusel y el reproductor muestran siempre la foto completa. */
+    GRID_MODE: 'uniforme',
   };
 
   /* ==========================================================================
@@ -556,6 +564,20 @@
     ],
   };
   CONFIG.GRID_ORDER = GRID_ORDER;
+
+  /* ==========================================================================
+     PUNTO FOCAL (modo uniforme): qué parte de la foto queda a la vista cuando la
+     tarjeta 3:2 la recorta. 'slug/archivo original' → object-position ('x% y%':
+     '50% 0%' = arriba, '50% 100%' = abajo, '0% 50%' = izquierda, '100% 50%' = derecha).
+     Sin entrada, el recorte es centrado. No cambia la proporción de la tarjeta.
+     ========================================================================== */
+  const FOCAL = {
+    'hokori/hokori_28.jpg': '50% 5%',                  // vertical: la cabeza arriba
+    'make-up-supplies/IMG_0059-2.jpg': '50% 10%',      // cuadrada: las cabezas de los pinceles
+    // 'ozone-ecommerce/Mesa de trabajo 21.jpg': cuadrada, sin punto focal: el centrado es el mejor recorte y aun así no entra entera
+    'charly/17.jpg': '75% 50%',                        // la cara y el sombrero, sobre el borde derecho
+  };
+  CONFIG.FOCAL = FOCAL;
 
   /* ==========================================================================
      VIDEOS Y CRÉDITOS
