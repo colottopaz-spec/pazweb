@@ -562,6 +562,33 @@
       'delfo/delfo3.jpg',
       'las-cosas-que-perdimos-en-el-fuego/21.jpg',
     ],
+    // Calle
+    'calle': [
+      // Orden fijo: el que se veía en 4 columnas (17 portadas) y al final las 6 de la opción A. hokori_28 ocupa 2 filas (SPAN): 22 + 2 = 24 espacios, cierra en 1, 2, 3 y 4 columnas
+      'orgullo-25/01.mp4',
+      'hokori/orgullo bostero.jpg',
+      'orgullo-25/02.mp4',
+      '8m/_MG_8048.jpg',
+      'nunca-llegamos-al-congreso/ley de tierras-22.jpg',
+      'lara-breda-y-morena/PCINE - Colotto, Paz _presentes (2025) .mp4',
+      '8m/_MG_8074.jpg',
+      'hokori/hokori_28.jpg',
+      'orgullo-25/03.mp4',
+      'orgullo-25/08.mp4',
+      'hokori/hokori_30.jpg',
+      'nunca-llegamos-al-congreso/ley de tierras-46.jpg',
+      '8m/_MG_8078.jpg',
+      'orgullo-25/12.mp4',
+      'orgullo-25/19.mp4',
+      'hokori/hokori_32.jpg',
+      'hokori/hokori_13.jpg',
+      'nunca-llegamos-al-congreso/ley de tierras-1.jpg',
+      '8m/_MG_8052.jpg',
+      'hokori/hokori_19.jpg',
+      'ley-de-glaciares/ley de glaciares.mp4',
+      '8m/_MG_8088.jpg',
+      'nunca-llegamos-al-congreso/ley de tierras-37.jpg',
+    ],
   };
   CONFIG.GRID_ORDER = GRID_ORDER;
 

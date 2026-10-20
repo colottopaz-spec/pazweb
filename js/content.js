@@ -6309,6 +6309,61 @@ window.SITE_CONTENT = {
     "project": "lara-breda-y-morena",
     "index": 0,
     "file": "PCINE - Colotto, Paz _presentes (2025) .mp4"
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/nunca-llegamos-al-congreso/portadas/018.jpg",
+    "project": "nunca-llegamos-al-congreso",
+    "index": 0,
+    "file": "ley de tierras-1.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/8m/portadas/019.jpg",
+    "project": "8m",
+    "index": 3,
+    "file": "_MG_8052.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/hokori/portadas/020.jpg",
+    "project": "hokori",
+    "index": 18,
+    "file": "hokori_19.jpg",
+    "w": 1100,
+    "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/8m/portadas/021.jpg",
+    "project": "8m",
+    "index": 11,
+    "file": "_MG_8088.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/nunca-llegamos-al-congreso/portadas/022.jpg",
+    "project": "nunca-llegamos-al-congreso",
+    "index": 6,
+    "file": "ley de tierras-37.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "video",
+    "poster": "assets/calle/ley-de-glaciares/001.jpg",
+    "w": 1920,
+    "h": 1080,
+    "src": "assets/calle/ley-de-glaciares/001-loop.mp4",
+    "project": "ley-de-glaciares",
+    "index": 0,
+    "file": "ley de glaciares.mp4"
    }
   ]
  },
