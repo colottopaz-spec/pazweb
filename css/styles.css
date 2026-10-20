@@ -350,6 +350,16 @@ body.is-home .site-footer { display: none; }
   flex-direction: column;
   gap: var(--gap);
 }
+/* Modo uniforme con tarjetas de varias filas (CONFIG.SPAN): grilla CSS fila por fila.
+   La tarjeta de 2 filas mide exactamente dos filas más el espacio entre ellas. */
+.wall-grid.wall-grid--rows {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  align-items: start;
+}
+.wall-grid--rows > .is-span { align-self: stretch; }
+.wall-grid--rows > .is-span .card-btn { height: 100%; }
+
 /* Banner horizontal abajo del muro (CONFIG.WALL_BANNER), a todo el ancho de la grilla */
 .wall-banner { margin-top: calc(var(--gap) * 2); }
 

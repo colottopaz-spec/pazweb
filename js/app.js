@@ -414,23 +414,49 @@
     // ordenar la lista según ese orden
     const go = CONFIG.GRID_ORDER || {};
     const gridOrder = go[route.sub ? `${route.section}/${route.sub}` : route.section] || go[sectionKey];
-    let columns;
+    let columns, seq;
     if (gridOrder && gridOrder.length) {
       // Cada entrada es 'slug/archivo' o solo el nombre de archivo original (campo file)
       const orderMap = new Map(gridOrder.map((key, i) => [key, i]));
       const pos = (c) => orderMap.get(`${c.project}/${c.file}`) ?? orderMap.get(c.file) ?? gridOrder.length + 1000;
       list = list.slice().sort((a, b) => pos(a) - pos(b));
-      columns = layoutFixed(list.slice(0, limit), cols);
+      seq = list.slice(0, limit);
+      columns = layoutFixed(seq, cols);
     } else {
       columns = layoutWall(list, sectionKey, cols, limit);
       // Modo uniforme: el mismo orden del mosaico, repartido fila por fila para que las filas queden alineadas
-      if (UNIFORM) columns = layoutFixed(columns.order, cols);
+      if (UNIFORM) { seq = columns.order; columns = layoutFixed(seq, cols); }
     }
+
+    // Modo uniforme con alguna tarjeta de varias filas (CONFIG.SPAN): grilla CSS fila por fila
+    if (UNIFORM && seq.some((c) => spanOf(c) > 1)) return spanGridHTML(seq, cols) + (banner ? bannerHTML(banner) : '');
 
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes
     return `<div class="wall-grid">${columns.map((col) =>
       `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>` +
       (banner ? bannerHTML(banner) : '');
+  }
+
+  // Filas que ocupa una tarjeta en modo uniforme (CONFIG.SPAN en js/data.js)
+  const spanOf = (c) => (UNIFORM && (CONFIG.SPAN || {})[`${c.project}/${c.file}`]) || 1;
+
+  // Grilla CSS fila por fila (modo uniforme con tarjetas de varias filas). Las tarjetas siguen el
+  // orden de seq; una de 2 filas ocupa su columna en la fila siguiente y las demás la rodean,
+  // sin huecos en el medio. La fila de cada tarjeta se calcula igual que el navegador
+  // (grid-auto-flow: row) solo para decidir qué carga primero.
+  function spanGridHTML(seq, cols) {
+    const ROW = 1 / UNIFORM_RATIO + 0.06;               // alto de fila en anchos de columna (con separación)
+    const taken = [];                                   // celdas ocupadas por tarjetas de varias filas
+    let r = 0, k = 0;
+    const cards = seq.map((c) => {
+      while ((taken[r] || [])[k]) { k += 1; if (k === cols) { k = 0; r += 1; } }
+      const span = spanOf(c);
+      for (let i = 1; i < span; i++) (taken[r + i] = taken[r + i] || [])[k] = true;
+      const html = coverCard(c, r * ROW, false, span);
+      k += 1; if (k === cols) { k = 0; r += 1; }
+      return html;
+    });
+    return `<div class="wall-grid wall-grid--rows" style="--cols:${cols}">${cards.join('')}</div>`;
   }
 
   // Misma tarjeta que la grilla, a todo el ancho; usa la imagen "banner" de la portada si existe
@@ -441,7 +467,8 @@
 
 
   // natural: la tarjeta conserva la proporción de la foto aunque el modo sea uniforme (banner)
-  function coverCard(c, top, natural = false) {
+  // span: filas que ocupa en la grilla CSS (spanGridHTML); con más de 1 la tarjeta llena su celda
+  function coverCard(c, top, natural = false, span = 1) {
     const p = projectBySlug[c.project];
     const title = L(p.title);
     const uniform = UNIFORM && !natural;
@@ -451,9 +478,9 @@
       ? `<video class="vprev" muted loop playsinline preload="none" poster="${esc(c.poster)}" data-src="${esc(c.src)}" aria-hidden="true" tabindex="-1"${pos}></video>`
       : `<img src="${esc(c.src)}" alt="" width="${c.w}" height="${c.h}" loading="${top < 2 ? 'eager' : 'lazy'}" decoding="async"${pos}>`;
     return `
-      <div class="fade-up" style="--d:${Math.round(Math.min(top, 3) * 150)}ms">
+      <div class="fade-up${span > 1 ? ' is-span' : ''}" style="--d:${Math.round(Math.min(top, 3) * 150)}ms${span > 1 ? `;grid-row:span ${span}` : ''}">
         <button type="button" class="card-btn" data-project="${esc(p.slug)}" data-index="${c.index}" aria-label="${esc(t('open.gallery'))}: ${esc(title)}">
-          <span class="card-media" style="aspect-ratio:${uniform ? '3/2' : `${c.w}/${c.h}`}">
+          <span class="card-media" style="${span > 1 ? 'height:100%' : `aspect-ratio:${uniform ? '3/2' : `${c.w}/${c.h}`}`}">
             ${media}
             ${p.section === 'proyectos' ? `<span class="card-name" aria-hidden="true">${esc(title)}</span>` : ''}
           </span>

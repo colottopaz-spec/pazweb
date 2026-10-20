@@ -580,6 +580,18 @@
   CONFIG.FOCAL = FOCAL;
 
   /* ==========================================================================
+     SPAN (modo uniforme): filas que ocupa la tarjeta de una foto, para mostrar una
+     vertical con su formato. Con 2, la tarjeta mide una columna por dos filas más el
+     espacio entre ellas, así no deja escalones; la foto se recorta lo mínimo (y el
+     punto focal de FOCAL decide qué se pierde). En los conteos de cada muro cuenta
+     como 2 lugares. 'slug/archivo original' → filas.
+     ========================================================================== */
+  const SPAN = {
+    'hokori/hokori_28.jpg': 2,   // calle: vertical
+  };
+  CONFIG.SPAN = SPAN;
+
+  /* ==========================================================================
      VIDEOS Y CRÉDITOS
      ========================================================================== */
   const VIDEO_META = {
