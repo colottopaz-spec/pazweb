@@ -2175,6 +2175,56 @@ window.SITE_CONTENT = {
    ]
   },
   {
+   "slug": "las-cosas-que-perdimos-en-el-fuego",
+   "section": "diario",
+   "sub": "personas",
+   "title": "las cosas que perdimos en el fuego",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/001.jpg",
+     "file": "21.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/002.jpg",
+     "file": "TP2 - ENTREGA - 1 - Paz Colotto .jpg",
+     "w": 1920,
+     "h": 1280
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/003.jpg",
+     "file": "TP2 - ENTREGA - 2 - Paz Colotto.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/004.jpg",
+     "file": "TP2 - ENTREGA - 3 - Paz Colotto - jpg.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/005.jpg",
+     "file": "TP2 - ENTREGA - 4 - Paz Colotto .jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/006.jpg",
+     "file": "TP2 - ENTREGA - 5 - Paz Colotto .jpg",
+     "w": 2000,
+     "h": 1333
+    }
+   ]
+  },
+  {
    "slug": "rica-x-rica",
    "section": "diario",
    "sub": "personas",
@@ -3940,6 +3990,35 @@ window.SITE_CONTENT = {
    ]
   },
   {
+   "slug": "make-up-supplies",
+   "section": "proyectos",
+   "sub": "marcas",
+   "title": "make up supplies",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/make-up-supplies/001.jpg",
+     "file": "IMG_0027.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/make-up-supplies/002.jpg",
+     "file": "IMG_0059-2.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/make-up-supplies/003.jpg",
+     "file": "IMG_0080.jpg",
+     "w": 2000,
+     "h": 2000
+    }
+   ]
+  },
+  {
    "slug": "maria-t",
    "section": "proyectos",
    "sub": "marcas",
@@ -5446,6 +5525,15 @@ window.SITE_CONTENT = {
     "file": "rica.JPEG",
     "w": 1100,
     "h": 619
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/portadas/011.jpg",
+    "project": "las-cosas-que-perdimos-en-el-fuego",
+    "index": 0,
+    "file": "21.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/sociales": [
@@ -5918,6 +6006,15 @@ window.SITE_CONTENT = {
     "file": "FINVOI-49.jpg",
     "w": 1100,
     "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/make-up-supplies/portadas/028.jpg",
+    "project": "make-up-supplies",
+    "index": 0,
+    "file": "IMG_0027.jpg",
+    "w": 1100,
+    "h": 1100
    }
   ],
   "calle": [

@@ -68,14 +68,14 @@
         en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M and Sol Ábrete.\nHair: Eugenia Grigorevskaia.']
       }
     },
-    'kabuki-y-ramirez': {
+    'kabuki-y-ramirez-de-negro-y-designers': {
       title: 'kabuki & ramírez',
       text: {
         es: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde y Llankaray Angulo M.'],
         en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde and Llankaray Angulo M.']
       }
     },
-    'doctor-indio-solari': {
+    'indio-solari': {
       title: 'doctor indio solari', year: 2026,
       text: {
         es: ['Fotografía institucional para la Universidad de Buenos Aires. Entrega del Doctor Honoris Causa al Indio Solari por su aporte a la cultura. Facultad de Medicina, Buenos Aires. Concierto sinfónico íntimo con la participación de Gaspar Benegas.'],
@@ -126,7 +126,7 @@
     },
 
     // DIARIOS DE VIAJES
-    'boipeba-brasil': { title: 'boipeba, brasil', year: 2020 },
+    'brasil': { title: 'boipeba, brasil', year: 2020 },
     'chile': { title: 'chile', year: 2025 },
     'el-faro': { title: 'el faro, mar azul', year: 2024 },
     'ir-al-norte': {
@@ -162,7 +162,7 @@
       title: 'rica x rica',
       text: { es: ['Fotografía y video. Trabajo práctico universitario de Iluminación y Cámara II. Rica es una artista, performer no binarie suiza que reside en Argentina y forma parte de la escena Ballroom.'], en: ['Photography and video. University assignment. Rica is a Swiss non-binary performer living in Argentina and active in the Ballroom scene.'] }
     },
-    'vera-y-el-mar': {
+    'vera-en-la-playa': {
       title: 'vera y el mar', year: 2019,
       text: { es: ['Febrero de 2019.'], en: ['February 2019.'] }
     },
@@ -194,11 +194,11 @@
         en: ['Independent audiovisual coverage of the Glacier Protection March in Argentina.']
       }
     },
-    'lara-brenda-y-morena': {
+    'lara-breda-y-morena': {
       title: 'lara & brenda & morena', year: 2025,
       text: { es: ['Cobertura audiovisual independiente de la Marcha en pedido de justicia por el triple femicidio de Florencio Varela. El colectivo Ni Una Menos y los familiares de las víctimas organizaron la marcha federal el sábado 27 de septiembre de 2025.'], en: ['Independent audiovisual coverage of the March demanding justice for the Florencio Varela femicides.'] }
     },
-    'marcha-del-orgullo-25': {
+    'orgullo-25': {
       title: 'marcha del orgullo \'25', year: 2025,
       text: { es: ['Cobertura audiovisual independiente para archivo personal de la Marcha del Orgullo en Buenos Aires.'], en: ['Independent audiovisual coverage of the Pride March in Buenos Aires.'] }
     },
@@ -233,7 +233,7 @@
   /* ==========================================================================
      ORDEN FIJO DE GRILLAS (GRID_ORDER)
      ========================================================================== */
-  const GRID_ORDER = {
+  const GRID_ORDER = {  // se exporta en CONFIG.GRID_ORDER (lo lee app.js)
     'proyectos/sociales': [
       'BAFWEEK_PAZ COLOTTO-1.jpg',              // Fila 1 – bafweek
       '16jua&gusi_imprimir01-142.jpg',          // Fila 1 – jua&gusi
@@ -257,6 +257,7 @@
       'FINVOI-22.jpg',       // Fila 3 – finvoi
     ],
   };
+  CONFIG.GRID_ORDER = GRID_ORDER;
 
   /* ==========================================================================
      VIDEOS Y CRÉDITOS
@@ -354,7 +355,7 @@
     {
       slug: 'nunca-llegamos-al-congreso-video',
       title: 'Nunca llegamos al congreso',
-      fromProject: { slug: 'nunca-llegamos-al-congreso', itemIndex: 0 },
+      fromProject: { slug: 'nunca-llegamos-al-congreso', itemIndex: 12 },  // ítem 13 (013-loop.mp4): el video; los anteriores son fotos
       link: { type: 'youtube', id: 'qjmaJtuulK8' },
     },
     {
