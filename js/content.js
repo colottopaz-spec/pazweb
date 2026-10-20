@@ -5825,6 +5825,24 @@ window.SITE_CONTENT = {
     "file": "KABUKI&BENITEZ_BS x Paz Colotto86.jpg",
     "w": 1100,
     "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/033.jpg",
+    "project": "jua-y-gusi",
+    "index": 3,
+    "file": "05jua&gusi_imprimir01-45.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/034.jpg",
+    "project": "jua-y-gusi",
+    "index": 12,
+    "file": "15jua&gusi_imprimir01-227.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/marcas": [

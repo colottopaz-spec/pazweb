@@ -36,7 +36,7 @@
        - Para todos los muros: un número, por ejemplo 6
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
-    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 15, 'proyectos/marcas': 9 },
+    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 16, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
 
     /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
        (nombre, créditos, año y texto, con los separadores) tiene hasta este número
@@ -319,10 +319,12 @@
       'clabakery/clabakery9.jpg',
       'make-up-supplies/IMG_0059-2.jpg',
       'ozone-ecommerce/Mesa de trabajo 21.jpg',
+      'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
+      'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
     ],
     // Proyectos > Sociales
     'proyectos/sociales': [
-      // Se ven 15 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba) y 5 elegidas por variedad
+      // Se ven 16 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba) y 6 más; a 4 columnas son 4 hileras completas
       'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
       'lisandro-alonso/01_Prensa_Web.jpg',
       'charly/17.jpg',
@@ -335,7 +337,8 @@
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
       'mile-quince-anos/IMG_0034.jpg',
-      'jua-y-gusi/16jua&gusi_imprimir01-142.jpg',
+      'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
+      'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto86.jpg',
       'indio-solari/28.jpg',
       // Resto: no se ve mientras esté el límite
@@ -355,6 +358,7 @@
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ144.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO121.jpg',
       'jua-y-gusi/13_jua&gusi_imprimir01-97.jpg',
+      'jua-y-gusi/16jua&gusi_imprimir01-142.jpg',
     ],
     // Proyectos > Marcas
     'proyectos/marcas': [
@@ -391,7 +395,7 @@
     ],
     // Diario (muro mixto: viajes + personas)
     'diario': [
-      // Lámina, en orden de lectura
+      // Se ven 12 (CONFIG.SECTION_LIMIT): las de la lámina; a 4 columnas son 3 hileras y cierra con la foto analógica en la playa
       'las-vegas/IMG_1770.jpg',
       'mar-azul/mar azul_3.jpg',
       'ir-al-norte/ir al norte_66.jpg',
@@ -404,7 +408,7 @@
       'dolor-de-utero/2d63a07d-7a45-430f-8a27-6294e02558c5_rw_1920.jpg',
       'ir-al-norte/ir al norte_154.jpg',
       'analogica/000044740009.jpg',
-      // Resto del muro (no está en la lámina), en el orden en que se veía
+      // Resto: no se ve mientras esté el límite
       'ir-al-norte/ir al norte x paz -526.jpg',
       'analogica/000044730001.jpg',
       'ir-al-norte/ir al norte x paz -607.jpg',
@@ -452,7 +456,6 @@
       'analogica/Roll1_00000016.JPG',
       'delfo/delfo8.jpg',
       'dolor-de-utero/6dc228c6-3e32-4021-beb7-c3614f06dbed_rw_1920.jpg',
-      // Portadas agregadas para otra lámina de esta sección
       'las-vegas/IMG_1650.jpg',
       'ir-al-norte/ir al norte_86.jpg',
       'ir-al-norte/ir al norte_35.jpg',
@@ -466,7 +469,7 @@
     ],
     // Diario > Viajes
     'diario/viajes': [
-      // Lámina, en orden de lectura
+      // Se ven 24 (CONFIG.SECTION_LIMIT): las 14 de la lámina y 10 más; a 4 columnas son 6 hileras y cierra con ir al norte azul y amarilla
       'ir-al-norte/ir al norte_138.jpg',
       'chile/03.jpg',
       'las-vegas/IMG_1650.jpg',
@@ -481,17 +484,17 @@
       'ir-al-norte/ir al norte_25.jpg',
       'las-vegas/IMG_0685.jpg',
       'chile/06.jpg',
-      // Resto del muro (no está en la lámina), en el orden en que se veía
       'ir-al-norte/ir al norte x paz -526.jpg',
       'ir-al-norte/ir al norte x paz -607.jpg',
       'las-vegas/IMG_0678.jpg',
-      'ir-al-norte/ir al norte x paz -740.jpg',
       'analogica/000044730005.jpg',
       'mar-del-plata-25/_MG_1660.jpg',
       'las-vegas/IMG_1033.jpg',
       'nyc-en-color/nueva york en color 4.jpg',
       'analogica/000044740009.jpg',
       'nyc/0369fc17-6f33-4f3a-b10b-013e3d68d2de_rw_1920.jpg',
+      'ir-al-norte/ir al norte x paz -740.jpg',
+      // Resto: no se ve mientras esté el límite
       'las-vegas/IMG_1176.jpg',
       'ir-al-norte/ir al norte x paz -777.jpg',
       'analogica/000044740010.jpg',
@@ -520,7 +523,6 @@
       'nyc/f7e151fb-8ada-4e6a-91d5-4d0d14d76497_rw_1920.jpg',
       'analogica/Roll1_00000016.JPG',
       'ir-al-norte/ir al norte_154.jpg',
-      // Portadas agregadas para otra lámina de esta sección
       'mar-azul/mar azul_3.jpg',
       'brasil/boipeba3.jpg',
     ],
