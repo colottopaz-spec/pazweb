@@ -8,11 +8,6 @@
 
    En ESTE archivo se edita lo que no sale de las carpetas:
    títulos, créditos, links de Vimeo/YouTube, bio y contacto.
-
-   Las claves (slug) son el nombre de la carpeta o archivo en minúsculas,
-   sin acentos, con "-" en lugar de espacios y "y" en lugar de "&".
-     "jua & gusi"            → 'jua-y-gusi'
-     "Se dice vulva .mp4"    → 'se-dice-vulva'
    ========================================================================== */
 
 (function () {
@@ -21,21 +16,164 @@
   const CONTENT = window.SITE_CONTENT || { welcome: [], projects: [], covers: {}, videos: [] };
 
   const CONFIG = {
-    SHOW_WRITINGS: false, // ← true para volver a mostrar la sección "escritos" (textos en `writings`)
+    SHOW_WRITINGS: false, // ← true para volver a mostrar la sección "escritos"
+
+    /* Orden fijo de la sección Video (slugs) */
+    VIDEO_ORDER: [
+      'atardecer-en-cachi-ya-no-quiero-jugar', // 1. Are we dating the same guy?
+      'uyuni-ya-nos-vamos',                    // 2. Uyuni
+      'nunca-llegamos-al-congreso-video',       // 3. Nunca llegamos al congreso
+      'ley-de-glaciares-video',                // 4. Ley de glaciares
+      'noche-de-pizzas-en-el-mistica',         // 5. Noche de pizzas en el mística
+      'bruta-cruz-teaser-2026-ficic',          // 6. Cruz (teaser)
+      'soy-paz-paz-colotto',                   // 7. Soy Paz
+      'se-dice-vulva',                         // 8. Se dice vulva
+    ],
+
+    /* Límite opcional de portadas visibles por sección. Ejemplo: { 'proyectos/marcas': 8 } */
+    SECTION_LIMIT: {},
   };
 
   /* ==========================================================================
-     PROYECTOS — título y créditos (opcional)
-     Si un proyecto no figura acá se muestra con el nombre de su carpeta.
-     credits: [rol, valor] → una línea: Nombre • Cliente X • Dirección Y • Año
-     Roles disponibles: client, director, writerDirector, dop, camera,
-     production, agency, art, styling, makeup, assistant, music, sound…
-     text: { es: ['párrafo', …], en: [...] } → se despliega con el botón "info"
+     PROYECTOS Y CRÉDITOS COMPLETOS
      ========================================================================== */
   const PROJECT_META = {
-    // 'astrea': { title: 'Astrea', year: 2025, credits: [['client', 'Astrea'], ['director', 'Paz Colotto']] },
+    // PROYECTOS / SOCIALES
+    'ficuba-lab': {
+      title: 'fic.uba lab', year: 2026,
+      text: { es: ['Retratos a tutores y participantes.'], en: ['Portraits of tutors and participants.'] }
+    },
+    'charly': {
+      title: 'Doctor Charly García', year: 2025,
+      text: {
+        es: ['Fotografía institucional para la Universidad de Buenos Aires. Entrega del Doctor Honoris Causa a Charly García por su trayectoria y su aporte a la cultura. Facultad de Filosofía y Letras, Buenos Aires.'],
+        en: ['Institutional photography for the University of Buenos Aires. Honorary Doctorate awarded to Charly García for his career and contribution to culture. Faculty of Philosophy and Letters, Buenos Aires.']
+      }
+    },
+    'irrefrenable': {
+      title: 'irrefrenable', year: 2025,
+      text: {
+        es: ['Cobertura fotográfica, obra de teatro Irrefrenable de Gonzalo Quintana. Buenos Aires. IRREFRENABLE es una obra documental en donde cuatro artistas croatas indagan sobre la identidad y las fuerzas naturales imposibles de detener que los constituyen. A partir de un cruce con la ciudad de Zagreb, los performers comparten sus historias y universos personales para rastrear y amplificar aquellos aspectos que los hacen únicos. Se trata de una prueba que busca superar los propios límites y generar un archivo escénico que ponga historias de la comunidad LGTBIQ+.'],
+        en: ['Photographic coverage of the play Irrefrenable by Gonzalo Quintana. Buenos Aires. IRREFRENABLE is a documentary play in which four Croatian artists explore identity and unstoppable natural forces. Through an encounter with Zagreb, performers share their stories to amplify what makes them unique and construct an LGBTIQ+ scenic archive.']
+      }
+    },
+    'lisandro-alonso': {
+      title: 'lisandro alonso', year: 2026,
+      text: { es: ['Retrato a Lisandro Alonso en la FADU, registro para el FIC.UBA.'], en: ['Portrait of Lisandro Alonso at FADU, recorded for FIC.UBA.'] }
+    },
+    'kabuki-y-benitez-emilse': {
+      title: 'kabuki & benítez emilse',
+      text: {
+        es: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M y Sol Ábrete.\nPelo: Eugenia Grigorevskaia.'],
+        en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M and Sol Ábrete.\nHair: Eugenia Grigorevskaia.']
+      }
+    },
+    'kabuki-y-ramirez': {
+      title: 'kabuki & ramírez',
+      text: {
+        es: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde y Llankaray Angulo M.'],
+        en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde and Llankaray Angulo M.']
+      }
+    },
+    'doctor-indio-solari': {
+      title: 'doctor indio solari', year: 2026,
+      text: {
+        es: ['Fotografía institucional para la Universidad de Buenos Aires. Entrega del Doctor Honoris Causa al Indio Solari por su aporte a la cultura. Facultad de Medicina, Buenos Aires. Concierto sinfónico íntimo con la participación de Gaspar Benegas.'],
+        en: ['Institutional photography for the University of Buenos Aires. Honorary Doctorate awarded to Indio Solari for his contribution to culture. Faculty of Medicine, Buenos Aires. Intimate symphonic concert featuring Gaspar Benegas.']
+      }
+    },
+    'mile-quince-anos': {
+      title: 'mile', year: 2022,
+      text: { es: ['Fotografía de quince años. Azul, Provincia de Buenos Aires.'], en: ['Fifteenth birthday photography. Azul, Buenos Aires Province.'] }
+    },
+    'jua-y-gusi': {
+      title: 'jua & gusi', year: 2025,
+      text: { es: ['Fotografía y edición. Casamiento de Juana & Agustín en Diciembre de 2025. Registro fotográfico de los preparativos y la fiesta.'], en: ['Photography and editing. Wedding of Juana & Agustín in December 2025. Photographic record of preparation and celebration.'] }
+    },
+    'bafweek': {
+      title: 'bafweek', year: 2026,
+      text: { es: ['Backstage del desfile de Las Pepas en BAFWeek.'], en: ['Backstage at Las Pepas fashion show at BAFWeek.'] }
+    },
+
+    // MARCAS
+    'clabakery': {
+      title: 'clabakery', year: 2024,
+      text: { es: ['Dirección creativa, edición y fotografía. Clabakery, emprendimiento de pastelería artesanal creado por Clara Zubiri. Buenos Aires, Azul.'], en: ['Creative direction, editing, and photography. Clabakery, artisan bakery venture created by Clara Zubiri. Buenos Aires, Azul.'] }
+    },
+    'parlle': {
+      title: 'parlle', year: 2024,
+      text: { es: ['Fotografía y edición. Parlle, marca de indumentaria argentina diseñada por Pilar Arroquy y Pilar Campagnolle.'], en: ['Photography and editing. Parlle, Argentine clothing brand designed by Pilar Arroquy and Pilar Campagnolle.'] }
+    },
+    'maria-t': {
+      title: 'maria t', year: 2023,
+      text: { es: ['Dirección creativa, edición y fotografía. Editorial y fotoproducto.'], en: ['Creative direction, editing, and photography. Editorial and product photography.'] }
+    },
+    'finvoi': {
+      title: 'finvoi', year: 2025,
+      text: { es: ['Cobertura fotográfica del evento de presentación de la app de financiamiento para empresas Finvoi.'], en: ['Photographic coverage of the launch event for the business financing app Finvoi.'] }
+    },
+    'astrea': {
+      title: 'astrea', year: 2025,
+      text: { es: ['Fotografía y edición para Astrea, artista de tango venezolana radicada en Buenos Aires. Proyecto musical inspirado en el tango porteño.'], en: ['Photography and editing for Astrea, Venezuelan tango artist based in Buenos Aires. Musical project inspired by tango.'] }
+    },
+    'ozone': {
+      title: 'ozone',
+      text: { es: ['Dirección creativa, edición y fotografía. Fotoproducto para e-commerce. Ozone es una marca de cosmética especializada en la realización de protectores solares físicos ecológicos y orgánicos hechos en Argentina.'], en: ['Creative direction, editing, and photography. E-commerce product photography. Ozone is an eco-friendly organic sunscreen brand made in Argentina.'] }
+    },
+    'penoucos': {
+      title: 'penoucos', year: 2024,
+      text: { es: ['Fotografía para el artista Gonzalo Penoucos.'], en: ['Photography for the artist Gonzalo Penoucos.'] }
+    },
+
+    // DIARIOS DE VIAJES
+    'boipeba-brasil': { title: 'boipeba, brasil', year: 2020 },
+    'chile': { title: 'chile', year: 2025 },
+    'el-faro': { title: 'el faro, mar azul', year: 2024 },
+    'ir-al-norte': {
+      title: 'ir al norte', year: 2026,
+      text: { es: ['Registro fotográfico del Norte Argentino y Bolivia.'], en: ['Photographic record of Northern Argentina and Bolivia.'] }
+    },
+    'las-vegas': {
+      title: 'las vegas', year: 2022,
+      text: { es: ['Las Vegas, Febrero de 2022.'], en: ['Las Vegas, February 2022.'] }
+    },
+    'mar-azul': { title: 'los dueños de la orilla', year: 2024 },
+    'mar-del-plata-25': {
+      title: 'mar del plata \'25', year: 2025,
+      text: { es: ['Parque San Martín en primavera. Mar del Plata.'], en: ['Parque San Martín in spring. Mar del Plata.'] }
+    },
+    'nyc': { title: 'nueva york (bn)', year: 2022 },
+    'nyc-en-color': { title: 'nueva york', year: 2022 },
+
+    // PERSONAS
+    'brujerias': {
+      title: 'brujerías', year: 2024,
+      text: { es: ['Fotografía y dirección creativa. Ella: Sofía Saiti.'], en: ['Photography and creative direction. Model: Sofía Saiti.'] }
+    },
+    'delfo': {
+      title: 'delfo', year: 2022,
+      text: { es: ['Ella: Delfina Ferro. Azul.'], en: ['Model: Delfina Ferro. Azul.'] }
+    },
+    'dolor-de-utero': {
+      title: 'dolor de útero', year: 2020,
+      text: { es: ['Proyecto fotográfico universitario realizado en la pandemia. Azul.'], en: ['University photography project created during the pandemic. Azul.'] }
+    },
+    'rica-x-rica': {
+      title: 'rica x rica',
+      text: { es: ['Fotografía y video. Trabajo práctico universitario de Iluminación y Cámara II. Rica es una artista, performer no binarie suiza que reside en Argentina y forma parte de la escena Ballroom.'], en: ['Photography and video. University assignment. Rica is a Swiss non-binary performer living in Argentina and active in the Ballroom scene.'] }
+    },
+    'vera-y-el-mar': {
+      title: 'vera y el mar', year: 2019,
+      text: { es: ['Febrero de 2019.'], en: ['February 2019.'] }
+    },
+    'las-cosas-que-perdimos-en-el-fuego': {
+      title: 'las cosas que perdimos en el fuego', year: 2021,
+      text: { es: ['Proyecto universitario de Iluminación y Cámara I. Ella: Inés Carús. Azul.'], en: ['University assignment for Lighting & Camera I. Model: Inés Carús. Azul.'] }
+    },
+
+    // CALLE
     'nunca-llegamos-al-congreso': {
-      year: 2026,
+      title: 'nunca llegamos al congreso', year: 2026,
       text: {
         es: [
           'Registro audiovisual y fotográfico independiente.',
@@ -44,43 +182,84 @@
         ],
         en: [
           'Independent audiovisual and photographic record.',
-          'Video: the point of view of escaping police repression. Photographs: a record of faces irritated by police tear gas.',
-          'On 6 August 2026 a massive march took place in front of the National Congress in Buenos Aires and other cities, rejecting the reform of the Land Law. Unions and social and political organisations gathered under the slogan “The homeland is not for sale”.',
+          'Video: point of view of escaping police repression. Photographs: faces irritated by tear gas.',
+          'On August 6, 2026, a massive march took place in front of the National Congress in Buenos Aires rejecting the Land Law reform.',
         ],
       },
+    },
+    'ley-de-glaciares': {
+      title: 'ley de glaciares',
+      text: {
+        es: ['Cobertura audiovisual independiente de la Marcha en defensa de los glaciares. Las marchas por la Ley de Glaciares en Argentina se realizan en rechazo a los proyectos de reforma impulsados por el Gobierno nacional para flexibilizar la protección de los ambientes glaciales y periglaciales. Diversas organizaciones ambientalistas, sociales y políticas se manifiestan bajo la consigna «La Ley de Glaciares no se toca» para defender las reservas estratégicas de agua del país.'],
+        en: ['Independent audiovisual coverage of the Glacier Protection March in Argentina.']
+      }
+    },
+    'lara-brenda-y-morena': {
+      title: 'lara & brenda & morena', year: 2025,
+      text: { es: ['Cobertura audiovisual independiente de la Marcha en pedido de justicia por el triple femicidio de Florencio Varela. El colectivo Ni Una Menos y los familiares de las víctimas organizaron la marcha federal el sábado 27 de septiembre de 2025.'], en: ['Independent audiovisual coverage of the March demanding justice for the Florencio Varela femicides.'] }
+    },
+    'marcha-del-orgullo-25': {
+      title: 'marcha del orgullo \'25', year: 2025,
+      text: { es: ['Cobertura audiovisual independiente para archivo personal de la Marcha del Orgullo en Buenos Aires.'], en: ['Independent audiovisual coverage of the Pride March in Buenos Aires.'] }
+    },
+    'hokori': {
+      title: 'hokori', year: 2024,
+      text: { es: ['Cobertura fotográfica y audiovisual para la revista digital Hokori. Buenos Aires.'], en: ['Photographic and audiovisual coverage for digital magazine Hokori. Buenos Aires.'] }
+    },
+    '8m': {
+      title: '8m', year: 2026,
+      text: { es: ['Cobertura fotográfica del 8 de Marzo, Día Internacional de la Mujer. Buenos Aires.'], en: ['Photographic coverage of March 8, International Women\'s Day. Buenos Aires.'] }
     },
   };
 
   /* ==========================================================================
-     INICIO — el orden sale de los números de "01_Paz Colotto" (01_, 02_, …).
-     Para mover una pieza sin renombrar archivos: nombre del archivo → posición.
+     INICIO — slider a pantalla completa
      ========================================================================== */
   const WELCOME_POSITION = {
-    '06_uyuni.mp4': 1,   // uyuni primero; después sigue el resto en orden (01 orgullo bostero, 02…)
+    '06_uyuni.mp4': 1,
   };
 
   /* ==========================================================================
-     FOTOS DESTACADAS — van arriba de todo en el muro (en este orden) y son la
-     primera foto del carrusel de su proyecto. Tienen que estar en la carpeta
-     portada(s) de esa sección. Se escribe el nombre del archivo tal cual.
+     FOTOS DESTACADAS
      ========================================================================== */
   const FEATURED = {
     'proyectos/sociales': [
-      '16jua&gusi_imprimir01-142.jpg',   // jua & gusi — el señor fumando
-      '02_Prensa_Web.jpg',               // lisandro alonso — retrato
-      'BAFWEEK_PAZ COLOTTO-1.jpg',       // bafweek — la señora con la copa
+      '16jua&gusi_imprimir01-142.jpg',
+      '02_Prensa_Web.jpg',
+      'BAFWEEK_PAZ COLOTTO-1.jpg',
     ],
   };
 
   /* ==========================================================================
-     VIDEOS (sección video) — título, año, créditos y link al video completo
-     link: { type: 'vimeo', id: '123456789' } o { type: 'youtube', id: 'xxxxxxxxxxx' }
-           (el id es el número del link de Vimeo: vimeo.com/manage/videos/123456789)
-     Mientras no haya link, el reproductor muestra el loop de la grilla.
-     synopsis: { es: '…', en: '…' } (opcional) — va debajo del título.
-     awards:   { es: '…', en: '…' } (opcional) — premios y selecciones, debajo de la sinopsis.
-     credits:  el rol puede ser una clave de js/i18n.js ('director') o escribirse
-               directamente: [{ es: 'Foquista', en: 'Focus puller' }, 'Nombre']
+     ORDEN FIJO DE GRILLAS (GRID_ORDER)
+     ========================================================================== */
+  const GRID_ORDER = {
+    'proyectos/sociales': [
+      'BAFWEEK_PAZ COLOTTO-1.jpg',              // Fila 1 – bafweek
+      '16jua&gusi_imprimir01-142.jpg',          // Fila 1 – jua&gusi
+      '02_Prensa_Web.jpg',                      // Fila 1 – lisandro alonso
+      'BAFWEEK_PAZ COLOTTO34.jpg',              // Fila 2 – bafweek
+      'KABUKI&BENITEZ_BS x Paz Colotto15.jpg',  // Fila 2 – kabuki benitez
+      '7.jpg',                                  // Fila 2 – indio solari
+      'KABUKI&BENITEZ_BS x Paz Colotto43.jpg',  // Fila 3 – kabuki benitez
+      'FICUBA LAB-13.jpg',                      // Fila 3 – ficuba lab
+      '1.jpg',                                  // Fila 3 – indio solari
+    ],
+    'proyectos/marcas': [
+      'astrea_1.jpg',        // Fila 1 – astrea
+      'GOLDEN C.jpg',        // Fila 1 – maria-t
+      'LUXTAN 2.jpg',        // Fila 1 – maria-t
+      'EQUILIBRIUM.jpg',     // Fila 2 – maria-t
+      'clabakery5.jpg',      // Fila 2 – clabakery
+      'clabakery6.jpg',      // Fila 2 – clabakery
+      '01.jpg',              // Fila 3 – parlle
+      'penoucos2.jpg',       // Fila 3 – penoucos
+      'FINVOI-22.jpg',       // Fila 3 – finvoi
+    ],
+  };
+
+  /* ==========================================================================
+     VIDEOS Y CRÉDITOS
      ========================================================================== */
   const VIDEO_META = {
     'bruta-cruz-teaser-2026-ficic': {
@@ -146,10 +325,7 @@
     },
     'noche-de-pizzas-en-el-mistica': {
       title: 'Noche de pizzas en el mística',
-      synopsis: {
-        es: 'Registro en el norte argentino, noche de pizzas.',
-        en: 'A record from northern Argentina, pizza night.',
-      },
+      synopsis: { es: 'Registro en el norte argentino, noche de pizzas.', en: 'A record from northern Argentina, pizza night.' },
       link: { type: 'vimeo', id: '1235174541' },
     },
     'atardecer-en-cachi-ya-no-quiero-jugar': {
@@ -161,15 +337,13 @@
       title: 'Soy Paz',
       synopsis: {
         es: 'Soy Paz es un autorretrato en forma de pregunta. Un minuto para explorar la contradicción de llamarse Paz sin sentirla del todo. La cámara se vuelve excusa, espejo y refugio para buscar entre recuerdos, fragmentos y dudas. Todavía no sé quién soy, por eso busco en las imágenes que creo.',
-        en: 'Soy Paz is a self-portrait in the form of a question. One minute to explore the contradiction of being named Paz (peace) without fully feeling it. The camera becomes an excuse, a mirror and a refuge to search among memories, fragments and doubts. I still don’t know who I am, so I search in the images I create.',
+        en: 'Soy Paz is a self-portrait in the form of a question. One minute to explore the contradiction of being named Paz without fully feeling it.',
       },
       credits: [['fullProduction', 'Paz Colotto']],
       link: { type: 'vimeo', id: '1064066737' },
     },
   };
 
-  /* Videos que no están en "04_Video" pero se suman a la sección video.
-     fromWelcome: archivo de "01_Paz Colotto" del que se toma el loop de la grilla. */
   const EXTRA_VIDEOS = [
     {
       slug: 'uyuni-ya-nos-vamos',
@@ -177,25 +351,30 @@
       fromWelcome: '06_uyuni.mp4',
       link: { type: 'vimeo', id: '1235230921' },
     },
+    {
+      slug: 'nunca-llegamos-al-congreso-video',
+      title: 'Nunca llegamos al congreso',
+      fromProject: { slug: 'nunca-llegamos-al-congreso', itemIndex: 0 },
+      link: { type: 'youtube', id: 'qjmaJtuulK8' },
+    },
+    {
+      slug: 'ley-de-glaciares-video',
+      title: 'Ley de glaciares',
+      fromProject: { slug: 'ley-de-glaciares', itemIndex: 0 },
+      link: { type: 'vimeo', id: '1235180479' },
+    },
   ];
 
-  /* Videos largos (más de 90 s) dentro de proyectos de calle: link al completo.
-     Clave = nombre del archivo como slug. Sin link se ve un loop de 10 s. */
   const LONG_VIDEO_LINKS = {
-    'pcine-colotto-paz-presentes-2025': { type: 'vimeo', id: '1235180055' },   // calle / lara, breda & morena — presentes (2025)
-    'ley-de-glaciares': { type: 'vimeo', id: '1235180479' },                  // calle / ley de glaciares
-    'nunca-llegamos-al-congreso-01': { type: 'youtube', id: 'qjmaJtuulK8' },   // calle / nunca llegamos al congreso
+    'pcine-colotto-paz-presentes-2025': { type: 'vimeo', id: '1235180055' },
+    'ley-de-glaciares': { type: 'vimeo', id: '1235180479' },
+    'nunca-llegamos-al-congreso-01': { type: 'youtube', id: 'qjmaJtuulK8' },
   };
 
-  /* ==========================================================================
-     ESCRITOS (sección oculta por ahora, ver CONFIG.SHOW_WRITINGS)
-     { slug: 'una-urna-1', title: 'Una urna', date: '2025',
-       body: { es: ['párrafo 1', 'párrafo 2'], en: ['paragraph 1', 'paragraph 2'] } }
-     ========================================================================== */
   const writings = [];
 
   /* ==========================================================================
-     SOBRE MÍ — texto de "PAGINA WEB_/05_Sobre mi/About.pdf"
+     SOBRE MÍ
      ========================================================================== */
   const about = {
     bio: {
@@ -218,31 +397,34 @@
     },
     contact: {
       email: 'colottopaz@gmail.com',
-      instagram: 'pazcolotto', // ← usuario de Instagram sin @ (vacío = no se muestra)
+      instagram: 'pazcolotto',
       location: { es: 'Buenos Aires, Argentina', en: 'Buenos Aires, Argentina' },
     },
   };
 
-  /* ---- Armado (no hace falta tocar) --------------------------------------- */
+  /* ---- Armado final -------------------------------------------------------- */
 
   const projects = CONTENT.projects.map((p) => {
     const meta = PROJECT_META[p.slug] || {};
     const items = p.items.map((it) => (it.long ? { ...it, link: LONG_VIDEO_LINKS[it.key] || null } : it));
     return { ...p, ...meta, items, title: meta.title || p.title, credits: meta.credits || [], year: meta.year || null };
   });
-  const projectBySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
 
-  // Destacadas: se marcan en el muro y pasan a ser la primera foto de su carrusel
+  const projectBySlug = Object.fromEntries(projects.map((p) => [p.slug, p]));
   const covers = Object.fromEntries(Object.entries(CONTENT.covers).map(([key, list]) => [key, list.map((c) => ({ ...c }))]));
+
+  Object.entries(CONFIG.SECTION_LIMIT).forEach(([key, limit]) => {
+    if (covers[key] && limit > 0) covers[key] = covers[key].slice(0, limit);
+  });
+
   Object.entries(FEATURED).forEach(([key, files]) => {
     files.forEach((file, order) => {
       const cover = (covers[key] || []).find((c) => c.file === file);
-      if (!cover) { console.warn(`Destacada no encontrada en portadas de ${key}: ${file}`); return; }
+      if (!cover) return;
       cover.featured = order + 1;
       const p = projectBySlug[cover.project];
       const from = cover.index;
       if (!p || from === 0) return;
-      // Mueve la foto al principio del carrusel y corrige el índice de las portadas de ese proyecto
       const [item] = p.items.splice(from, 1);
       p.items.unshift(item);
       Object.values(covers).flat().forEach((c) => {
@@ -257,21 +439,36 @@
     const meta = VIDEO_META[v.slug] || {};
     return { ...v, ...meta, title: meta.title || v.title, credits: meta.credits || [], year: meta.year || null, link: meta.link || null };
   });
+
   EXTRA_VIDEOS.forEach((extra) => {
-    const source = CONTENT.welcome.find((w) => w.file === extra.fromWelcome && w.type === 'video');
-    if (!source) { console.warn(`Video extra: no encuentro ${extra.fromWelcome} en el inicio`); return; }
-    videos.push({ src: source.src, poster: source.poster, w: source.w, h: source.h, credits: [], year: null, ...extra });
+    if (extra.fromWelcome) {
+      const source = CONTENT.welcome.find((w) => w.file === extra.fromWelcome && w.type === 'video');
+      if (source) videos.push({ src: source.src, poster: source.poster, w: source.w, h: source.h, credits: [], year: null, ...extra });
+    } else if (extra.fromProject) {
+      const proj = projects.find((p) => p.slug === extra.fromProject.slug);
+      if (proj) {
+        const item = proj.items[extra.fromProject.itemIndex] || proj.items[0];
+        if (item) videos.push({ src: item.src, poster: item.poster || item.src, w: item.w || 1920, h: item.h || 1080, credits: [], year: null, ...extra });
+      }
+    }
   });
 
-  // Retrato: primera foto de "PAGINA WEB_/05_Sobre mi" (lo arma tools/build.py)
+  const orderMap = new Map(CONFIG.VIDEO_ORDER.map((slug, i) => [slug, i]));
+  videos.sort((a, b) => {
+    const ai = orderMap.has(a.slug) ? orderMap.get(a.slug) : CONFIG.VIDEO_ORDER.length + 1000;
+    const bi = orderMap.has(b.slug) ? orderMap.get(b.slug) : CONFIG.VIDEO_ORDER.length + 1000;
+    return ai - bi;
+  });
+
   about.portrait = CONTENT.portrait || null;
 
   const welcome = CONTENT.welcome.slice();
   Object.entries(WELCOME_POSITION).forEach(([file, position]) => {
     const from = welcome.findIndex((w) => w.file === file);
-    if (from < 0) { console.warn(`Inicio: no encuentro ${file}`); return; }
-    const [item] = welcome.splice(from, 1);
-    welcome.splice(Math.max(0, position - 1), 0, item);
+    if (from >= 0) {
+      const [item] = welcome.splice(from, 1);
+      welcome.splice(Math.max(0, position - 1), 0, item);
+    }
   });
 
   window.SITE_DATA = { CONFIG, welcome, projects, covers, videos, writings, about };
