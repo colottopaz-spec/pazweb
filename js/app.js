@@ -284,6 +284,24 @@
     return width < 480 ? 1 : width < 900 ? 2 : width < 1500 ? 3 : 4;
   }
 
+  // Muro con orden fijo posicional (fila por fila, izquierda a derecha).
+  // Cada elemento de la lista se coloca en la columna que le corresponde
+  // según su posición: pos 0 → col 0, pos 1 → col 1, ... pos N-1 → col N-1,
+  // pos N → col 0 (siguiente fila), etc.
+  function layoutFixed(list, cols) {
+    const GAP = 0.06;
+    const columns = Array.from({ length: cols }, () => []);
+    const heights = Array(cols).fill(0);
+    list.forEach((c, i) => {
+      const k = i % cols;
+      const top = heights[k];
+      const h = c.h / c.w;
+      columns[k].push({ c, top, bottom: top + h });
+      heights[k] = top + h + GAP;
+    });
+    return columns;
+  }
+
   // Generador pseudoaleatorio con semilla: el orden es variado pero estable
   function seeded(text) {
     let h = 2166136261;
@@ -361,15 +379,33 @@
   }
 
   function wallHTML(route) {
-    const list = coversFor(route);
+    const sectionKey = route.section + '/' + (route.sub || '');
+    let list = coversFor(route);
     if (!list.length) return `<p class="muted">${esc(t('empty'))}</p>`;
     const cols = columnsFor(window.innerWidth);
     state.cols = cols;
-    const columns = layoutWall(list, route.section + '/' + (route.sub || ''), cols);
+
+    // Si hay GRID_ORDER para esta sección, ordenar la lista según ese orden
+    const gridOrder = (CONFIG.GRID_ORDER || {})[sectionKey];
+    let columns;
+    if (gridOrder && gridOrder.length) {
+      // Reordenar la lista según gridOrder (array de nombres de archivo en orden deseado)
+      const orderMap = new Map(gridOrder.map((file, i) => [file, i]));
+      list = list.slice().sort((a, b) => {
+        const ai = orderMap.has(a.file) ? orderMap.get(a.file) : gridOrder.length + 1000;
+        const bi = orderMap.has(b.file) ? orderMap.get(b.file) : gridOrder.length + 1000;
+        return ai - bi;
+      });
+      columns = layoutFixed(list, cols);
+    } else {
+      columns = layoutWall(list, sectionKey, cols);
+    }
+
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes
     return `<div class="wall-grid">${columns.map((col) =>
       `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>`;
   }
+
 
   function coverCard(c, top) {
     const p = projectBySlug[c.project];
