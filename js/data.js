@@ -476,7 +476,7 @@
     ],
     // Diario > Viajes
     'diario/viajes': [
-      // Se ven 24 (CONFIG.SECTION_LIMIT): las 14 de la lámina y 10 más; a 4 columnas son 6 hileras y cierra con ir al norte azul y amarilla
+      // Se ven 24 (CONFIG.SECTION_LIMIT). Posiciones pensadas en 4 columnas: fachada amarilla de ir al norte en el lugar 11, chicas en la playa (analogica) debajo del caniche de mar del plata, cierran las chicas en el 24
       'ir-al-norte/ir al norte_138.jpg',
       'chile/03.jpg',
       'las-vegas/IMG_1650.jpg',
@@ -487,6 +487,7 @@
       'las-vegas/IMG_1661.jpg',
       'ir-al-norte/ir al norte x paz -761.jpg',
       'chile/19.jpg',
+      'ir-al-norte/ir al norte x paz -740.jpg',
       'analogica/000044730001.jpg',
       'ir-al-norte/ir al norte_25.jpg',
       'las-vegas/IMG_0685.jpg',
@@ -498,9 +499,8 @@
       'mar-del-plata-25/_MG_1660.jpg',
       'las-vegas/IMG_1033.jpg',
       'nyc-en-color/nueva york en color 4.jpg',
-      'analogica/000044740009.jpg',
       'nyc/bcd6c392-bb39-4819-8c98-ba5b1c40bd0b_rw_1920.jpg',
-      'ir-al-norte/ir al norte x paz -740.jpg',
+      'analogica/000044740009.jpg',
       // Resto: no se ve mientras esté el límite
       'nyc/0369fc17-6f33-4f3a-b10b-013e3d68d2de_rw_1920.jpg',
       'las-vegas/IMG_1176.jpg',

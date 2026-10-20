@@ -5050,12 +5050,12 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/diario/viajes/mar-del-plata-25/portadas/015.jpg",
+    "src": "assets/diario/viajes/mar-del-plata-25/portadas/056.jpg",
     "project": "mar-del-plata-25",
     "index": 7,
     "file": "_MG_1660.jpg",
     "w": 1100,
-    "h": 618
+    "h": 734
    },
    {
     "type": "image",
