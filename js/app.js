@@ -280,8 +280,40 @@
     return subs.flatMap((s) => covers[`${section}/${s}`] || []);
   }
 
+  // Límite opcional de portadas por muro (CONFIG.SECTION_LIMIT en js/data.js):
+  // un número para todos los muros u { 'seccion/sub': N, 'seccion': N }. Sin valor válido, sin límite.
+  function limitFor({ section, sub }) {
+    const cfg = CONFIG.SECTION_LIMIT;
+    const value = typeof cfg === 'number' ? cfg : (cfg || {})[sub ? `${section}/${sub}` : section];
+    return Number.isInteger(value) && value > 0 ? value : Infinity;
+  }
+
   function columnsFor(width) {
     return width < 480 ? 1 : width < 900 ? 2 : width < 1500 ? 3 : 4;
+  }
+
+  // Muro con orden fijo posicional (fila por fila, izquierda a derecha).
+  // Cada elemento de la lista se coloca en la columna que le corresponde
+  // según su posición: pos 0 → col 0, pos 1 → col 1, ... pos N-1 → col N-1,
+  // pos N → col 0 (siguiente fila), etc.
+  // Modo de grilla (CONFIG.GRID_MODE): 'uniforme' = todas las tarjetas 3:2 con la foto recortada;
+  // 'mosaico' = cada tarjeta con la proporción de su foto
+  const UNIFORM = CONFIG.GRID_MODE === 'uniforme';
+  const UNIFORM_RATIO = 3 / 2;
+  const cardH = (c) => (UNIFORM ? 1 / UNIFORM_RATIO : c.h / c.w);   // alto de la tarjeta en anchos de columna
+
+  function layoutFixed(list, cols) {
+    const GAP = 0.06;
+    const columns = Array.from({ length: cols }, () => []);
+    const heights = Array(cols).fill(0);
+    list.forEach((c, i) => {
+      const k = i % cols;
+      const top = heights[k];
+      const h = cardH(c);
+      columns[k].push({ c, top, bottom: top + h });
+      heights[k] = top + h + GAP;
+    });
+    return columns;
   }
 
   // Generador pseudoaleatorio con semilla: el orden es variado pero estable
@@ -302,7 +334,7 @@
   //   - repetirse en la misma franja horizontal (otra columna): leve
   //   - tener muchas portadas pendientes: resta, para que no se amontonen al final
   // Dentro de cada proyecto se respeta el orden de la carpeta "portada(s)".
-  function layoutWall(list, seedKey, cols) {
+  function layoutWall(list, seedKey, cols, limit = Infinity) {
     const groups = new Map();
     list.forEach((c) => {
       if (!groups.has(c.project)) groups.set(c.project, []);
@@ -314,22 +346,26 @@
     const columns = Array.from({ length: cols }, () => []);
     const heights = Array(cols).fill(0);
 
+    const order = [];                                   // orden en que se colocan (lo usa el modo uniforme)
     const place = (c, k) => {
       const top = heights[k];
       const h = c.h / c.w;
       columns[k].push({ c, top, bottom: top + h });
       heights[k] = top + h + GAP;
+      order.push(c);
     };
 
     // Destacadas (FEATURED en js/data.js): primeras, de izquierda a derecha
-    const featured = list.filter((c) => c.featured).sort((a, b) => a.featured - b.featured);
+    const featured = list.filter((c) => c.featured).sort((a, b) => a.featured - b.featured).slice(0, limit);
     featured.forEach((f) => {
       const g = groups.get(f.project);
       g.splice(g.findIndex((c) => c.src === f.src), 1);
       place(f, heights.indexOf(Math.min(...heights)));
     });
 
-    for (let placed = featured.length; placed < list.length; placed++) {
+    // Con límite se corta la colocación: queda el principio de la misma grilla
+    const total = Math.min(list.length, limit);
+    for (let placed = featured.length; placed < total; placed++) {
       const k = heights.indexOf(Math.min(...heights));
       const top = heights[k];
       const open = [...groups].filter(([, g]) => g.length);
@@ -357,30 +393,94 @@
       });
       place(best.g.shift(), k);
     }
+    columns.order = order;
     return columns;
   }
 
   function wallHTML(route) {
-    const list = coversFor(route);
+    const sectionKey = route.section + '/' + (route.sub || '');
+    let list = coversFor(route);
     if (!list.length) return `<p class="muted">${esc(t('empty'))}</p>`;
     const cols = columnsFor(window.innerWidth);
+    const limit = limitFor(route);
     state.cols = cols;
-    const columns = layoutWall(list, route.section + '/' + (route.sub || ''), cols);
+
+    // Banner (CONFIG.WALL_BANNER): una portada sale de la grilla y va abajo de todo, a todo el ancho
+    const bannerKey = (CONFIG.WALL_BANNER || {})[route.sub ? `${route.section}/${route.sub}` : route.section];
+    const banner = bannerKey ? list.find((c) => `${c.project}/${c.file}` === bannerKey) : null;
+    if (banner) list = list.filter((c) => c !== banner);
+
+    // Si hay GRID_ORDER para esta sección ('seccion/sub' o 'seccion' para el muro mixto),
+    // ordenar la lista según ese orden
+    const go = CONFIG.GRID_ORDER || {};
+    const gridOrder = go[route.sub ? `${route.section}/${route.sub}` : route.section] || go[sectionKey];
+    let columns, seq;
+    if (gridOrder && gridOrder.length) {
+      // Cada entrada es 'slug/archivo' o solo el nombre de archivo original (campo file)
+      const orderMap = new Map(gridOrder.map((key, i) => [key, i]));
+      const pos = (c) => orderMap.get(`${c.project}/${c.file}`) ?? orderMap.get(c.file) ?? gridOrder.length + 1000;
+      list = list.slice().sort((a, b) => pos(a) - pos(b));
+      seq = list.slice(0, limit);
+      columns = layoutFixed(seq, cols);
+    } else {
+      columns = layoutWall(list, sectionKey, cols, limit);
+      // Modo uniforme: el mismo orden del mosaico, repartido fila por fila para que las filas queden alineadas
+      if (UNIFORM) { seq = columns.order; columns = layoutFixed(seq, cols); }
+    }
+
+    // Modo uniforme con alguna tarjeta de varias filas (CONFIG.SPAN): grilla CSS fila por fila
+    if (UNIFORM && seq.some((c) => spanOf(c) > 1)) return spanGridHTML(seq, cols) + (banner ? bannerHTML(banner) : '');
+
     // e.top está en anchos de columna: lo que queda arriba carga primero y aparece antes
     return `<div class="wall-grid">${columns.map((col) =>
-      `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>`;
+      `<div class="wall-col">${col.map((e) => coverCard(e.c, e.top)).join('')}</div>`).join('')}</div>` +
+      (banner ? bannerHTML(banner) : '');
   }
 
-  function coverCard(c, top) {
+  // Filas que ocupa una tarjeta en modo uniforme (CONFIG.SPAN en js/data.js)
+  const spanOf = (c) => (UNIFORM && (CONFIG.SPAN || {})[`${c.project}/${c.file}`]) || 1;
+
+  // Grilla CSS fila por fila (modo uniforme con tarjetas de varias filas). Las tarjetas siguen el
+  // orden de seq; una de 2 filas ocupa su columna en la fila siguiente y las demás la rodean,
+  // sin huecos en el medio. La fila de cada tarjeta se calcula igual que el navegador
+  // (grid-auto-flow: row) solo para decidir qué carga primero.
+  function spanGridHTML(seq, cols) {
+    const ROW = 1 / UNIFORM_RATIO + 0.06;               // alto de fila en anchos de columna (con separación)
+    const taken = [];                                   // celdas ocupadas por tarjetas de varias filas
+    let r = 0, k = 0;
+    const cards = seq.map((c) => {
+      while ((taken[r] || [])[k]) { k += 1; if (k === cols) { k = 0; r += 1; } }
+      const span = spanOf(c);
+      for (let i = 1; i < span; i++) (taken[r + i] = taken[r + i] || [])[k] = true;
+      const html = coverCard(c, r * ROW, false, span);
+      k += 1; if (k === cols) { k = 0; r += 1; }
+      return html;
+    });
+    return `<div class="wall-grid wall-grid--rows" style="--cols:${cols}">${cards.join('')}</div>`;
+  }
+
+  // Misma tarjeta que la grilla, a todo el ancho; usa la imagen "banner" de la portada si existe
+  function bannerHTML(c) {
+    const img = c.banner ? { ...c, type: 'image', src: c.banner.src, w: c.banner.w, h: c.banner.h } : c;
+    return `<div class="wall-banner">${coverCard(img, 99, true)}</div>`;
+  }
+
+
+  // natural: la tarjeta conserva la proporción de la foto aunque el modo sea uniforme (banner)
+  // span: filas que ocupa en la grilla CSS (spanGridHTML); con más de 1 la tarjeta llena su celda
+  function coverCard(c, top, natural = false, span = 1) {
     const p = projectBySlug[c.project];
     const title = L(p.title);
+    const uniform = UNIFORM && !natural;
+    const focal = uniform && (CONFIG.FOCAL || {})[`${c.project}/${c.file}`];
+    const pos = focal ? ` style="object-position:${esc(focal)}"` : '';
     const media = c.type === 'video'
-      ? `<video class="vprev" muted loop playsinline preload="none" poster="${esc(c.poster)}" data-src="${esc(c.src)}" aria-hidden="true" tabindex="-1"></video>`
-      : `<img src="${esc(c.src)}" alt="" width="${c.w}" height="${c.h}" loading="${top < 2 ? 'eager' : 'lazy'}" decoding="async">`;
+      ? `<video class="vprev" muted loop playsinline preload="none" poster="${esc(c.poster)}" data-src="${esc(c.src)}" aria-hidden="true" tabindex="-1"${pos}></video>`
+      : `<img src="${esc(c.src)}" alt="" width="${c.w}" height="${c.h}" loading="${top < 2 ? 'eager' : 'lazy'}" decoding="async"${pos}>`;
     return `
-      <div class="fade-up" style="--d:${Math.round(Math.min(top, 3) * 150)}ms">
+      <div class="fade-up${span > 1 ? ' is-span' : ''}" style="--d:${Math.round(Math.min(top, 3) * 150)}ms${span > 1 ? `;grid-row:span ${span}` : ''}">
         <button type="button" class="card-btn" data-project="${esc(p.slug)}" data-index="${c.index}" aria-label="${esc(t('open.gallery'))}: ${esc(title)}">
-          <span class="card-media" style="aspect-ratio:${c.w}/${c.h}">
+          <span class="card-media" style="${span > 1 ? 'height:100%' : `aspect-ratio:${uniform ? '3/2' : `${c.w}/${c.h}`}`}">
             ${media}
             ${p.section === 'proyectos' ? `<span class="card-name" aria-hidden="true">${esc(title)}</span>` : ''}
           </span>
@@ -540,12 +640,37 @@
   }
 
   // Nombre • créditos (si hay) • año (si hay)
+  // Dónde va el texto de un proyecto: 'pie' (corto, directo en el pie), 'info' (largo,
+  // botón con desplegable), 'creditos' (ya figura en los créditos) o 'nada' (sin texto).
+  // La decisión es la misma en los dos idiomas: corto solo si entra en ES y en EN.
+  function textPlacement(p) {
+    if (!p.text) return 'nada';
+    const max = CONFIG.PIE_MAX_CHARS || 95;
+    const pick = (v, lang) => (v && typeof v === 'object' && !Array.isArray(v) ? (v[lang] ?? v.es) : v ?? '');
+    const langs = ['es', 'en'].map((lang) => {
+      const paras = [].concat(pick(p.text, lang));
+      const credits = (p.credits || []).map(([role, value]) => [
+        role ? (typeof role === 'string' ? (UI[lang] && UI[lang]['role.' + role]) || UI.es['role.' + role] || role : pick(role, lang)) : '',
+        pick(value, lang),
+      ]);
+      const inCredits = paras.every((par) => credits.some(([, v]) => v === par));
+      const pieces = [pick(p.title, lang), ...credits.map(([k, v]) => (k ? `${k} ${v}` : v)), p.year ? String(p.year) : '', ...paras].filter(Boolean);
+      const chars = pieces.join('').length + pieces.length - 1;   // con un separador "•" entre piezas
+      return { inCredits, short: paras.length === 1 && chars <= max };
+    });
+    if (langs.every((x) => x.inCredits)) return 'creditos';
+    return langs.every((x) => x.short) ? 'pie' : 'info';
+  }
+
   function renderLbInfo() {
     const p = state.lb.project;
     if (!p) return;
-    const text = p.text ? L(p.text) : null;
+    const place = textPlacement(p);
+    const text = place === 'info' ? L(p.text) : null;
+    const sep = '<span class="cr-sep" aria-hidden="true">•</span>';
     $('#lb-info').innerHTML = creditLine(L(p.title), p.credits || [], p.year, 'lb-title') +
-      (text ? `<span class="cr-sep" aria-hidden="true">•</span><button type="button" class="lb-btn" data-lb-info aria-controls="lb-text" aria-expanded="${!$('#lb-text').hidden}">${esc(t('info'))}</button>` : '');
+      (place === 'pie' ? `${sep}<span class="cr">${esc(L(p.text)[0])}</span>` : '') +
+      (text ? `${sep}<button type="button" class="lb-btn" data-lb-info aria-controls="lb-text" aria-expanded="${!$('#lb-text').hidden}">${esc(t('info'))}</button>` : '');
     $('#lb-text').innerHTML = text ? text.map((par) => `<p>${esc(par)}</p>`).join('') : '';
     if (!text) $('#lb-text').hidden = true;
     updateCounter();

@@ -2175,6 +2175,56 @@ window.SITE_CONTENT = {
    ]
   },
   {
+   "slug": "las-cosas-que-perdimos-en-el-fuego",
+   "section": "diario",
+   "sub": "personas",
+   "title": "las cosas que perdimos en el fuego",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/001.jpg",
+     "file": "21.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/002.jpg",
+     "file": "TP2 - ENTREGA - 1 - Paz Colotto .jpg",
+     "w": 1920,
+     "h": 1280
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/003.jpg",
+     "file": "TP2 - ENTREGA - 2 - Paz Colotto.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/004.jpg",
+     "file": "TP2 - ENTREGA - 3 - Paz Colotto - jpg.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/005.jpg",
+     "file": "TP2 - ENTREGA - 4 - Paz Colotto .jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/006.jpg",
+     "file": "TP2 - ENTREGA - 5 - Paz Colotto .jpg",
+     "w": 2000,
+     "h": 1333
+    }
+   ]
+  },
+  {
    "slug": "rica-x-rica",
    "section": "diario",
    "sub": "personas",
@@ -3241,6 +3291,13 @@ window.SITE_CONTENT = {
     {
      "type": "image",
      "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/016.jpg",
+     "file": "KABUKI&BENITEZ_BS x Paz Colotto86.jpg",
+     "w": 2000,
+     "h": 1333
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/017.jpg",
      "file": "KABUKI&BENITEZ_BS x Paz Colotto89.jpg",
      "w": 2000,
      "h": 1333
@@ -3799,143 +3856,31 @@ window.SITE_CONTENT = {
    ]
   },
   {
-   "slug": "finvoi",
+   "slug": "make-up-supplies",
    "section": "proyectos",
    "sub": "marcas",
-   "title": "FINVOI",
+   "title": "make up supplies",
    "items": [
     {
      "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/001.jpg",
-     "file": "FINVOI-22.jpg",
+     "src": "assets/proyectos/marcas/make-up-supplies/001.jpg",
+     "file": "IMG_0027.jpg",
      "w": 2000,
-     "h": 1123
+     "h": 2000
     },
     {
      "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/002.jpg",
-     "file": "FINVOI-23.jpg",
+     "src": "assets/proyectos/marcas/make-up-supplies/002.jpg",
+     "file": "IMG_0059-2.jpg",
      "w": 2000,
-     "h": 1123
+     "h": 2000
     },
     {
      "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/003.jpg",
-     "file": "FINVOI-24.jpg",
+     "src": "assets/proyectos/marcas/make-up-supplies/003.jpg",
+     "file": "IMG_0080.jpg",
      "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/004.jpg",
-     "file": "FINVOI-25.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/005.jpg",
-     "file": "FINVOI-28.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/006.jpg",
-     "file": "FINVOI-29.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/007.jpg",
-     "file": "FINVOI-31.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/008.jpg",
-     "file": "FINVOI-40.jpg",
-     "w": 2000,
-     "h": 1333
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/009.jpg",
-     "file": "FINVOI-41.jpg",
-     "w": 2000,
-     "h": 1333
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/010.jpg",
-     "file": "FINVOI-43.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/011.jpg",
-     "file": "FINVOI-47.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/012.jpg",
-     "file": "FINVOI-49.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/013.jpg",
-     "file": "FINVOI-50.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/014.jpg",
-     "file": "FINVOI-51.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/015.jpg",
-     "file": "FINVOI-52.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/016.jpg",
-     "file": "FINVOI-53.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/017.jpg",
-     "file": "FINVOI-86.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/018.jpg",
-     "file": "FINVOI-87.jpg",
-     "w": 2000,
-     "h": 1123
-    },
-    {
-     "type": "image",
-     "src": "assets/proyectos/marcas/finvoi/019.jpg",
-     "file": "FINVOI-91.jpg",
-     "w": 2000,
-     "h": 1123
+     "h": 2000
     }
    ]
   },
@@ -4106,6 +4051,42 @@ window.SITE_CONTENT = {
      "file": "d7095bc8-780c-4397-9729-33ce04ab9d00_rw_1920.jpg",
      "w": 2000,
      "h": 1333
+    }
+   ]
+  },
+  {
+   "slug": "ozone-ecommerce",
+   "section": "proyectos",
+   "sub": "marcas",
+   "title": "ozone - ecommerce",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/001.jpg",
+     "file": "Mesa de trabajo 4.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/002.jpg",
+     "file": "Mesa de trabajo 12.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/003.jpg",
+     "file": "Mesa de trabajo 17.jpg",
+     "w": 2000,
+     "h": 2000
+    },
+    {
+     "type": "image",
+     "src": "assets/proyectos/marcas/ozone-ecommerce/004.jpg",
+     "file": "Mesa de trabajo 21.jpg",
+     "w": 2000,
+     "h": 2000
     }
    ]
   },
@@ -5069,12 +5050,12 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/diario/viajes/mar-del-plata-25/portadas/015.jpg",
+    "src": "assets/diario/viajes/mar-del-plata-25/portadas/056.jpg",
     "project": "mar-del-plata-25",
     "index": 7,
     "file": "_MG_1660.jpg",
     "w": 1100,
-    "h": 618
+    "h": 734
    },
    {
     "type": "image",
@@ -5354,6 +5335,87 @@ window.SITE_CONTENT = {
     "file": "Roll1_00000016.JPG",
     "w": 1100,
     "h": 740
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/mar-azul/portadas/047.jpg",
+    "project": "mar-azul",
+    "index": 2,
+    "file": "mar azul_3.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/brasil/portadas/048.jpg",
+    "project": "brasil",
+    "index": 2,
+    "file": "boipeba3.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/las-vegas/portadas/049.jpg",
+    "project": "las-vegas",
+    "index": 25,
+    "file": "IMG_1650.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/ir-al-norte/portadas/050.jpg",
+    "project": "ir-al-norte",
+    "index": 54,
+    "file": "ir al norte_86.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/ir-al-norte/portadas/051.jpg",
+    "project": "ir-al-norte",
+    "index": 18,
+    "file": "ir al norte_35.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/chile/portadas/052.jpg",
+    "project": "chile",
+    "index": 18,
+    "file": "19.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/las-vegas/portadas/053.jpg",
+    "project": "las-vegas",
+    "index": 3,
+    "file": "IMG_0685.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/chile/portadas/054.jpg",
+    "project": "chile",
+    "index": 5,
+    "file": "06.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/nyc/portadas/055.jpg",
+    "project": "nyc",
+    "index": 8,
+    "file": "bcd6c392-bb39-4819-8c98-ba5b1c40bd0b_rw_1920.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "diario/personas": [
@@ -5446,6 +5508,51 @@ window.SITE_CONTENT = {
     "file": "rica.JPEG",
     "w": 1100,
     "h": 619
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/portadas/011.jpg",
+    "project": "las-cosas-que-perdimos-en-el-fuego",
+    "index": 0,
+    "file": "21.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/vera-en-la-playa/portadas/012.jpg",
+    "project": "vera-en-la-playa",
+    "index": 1,
+    "file": "9b885267-98ff-4faf-82d2-d739a2b11ab0_rw_1920.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/delfo/portadas/013.jpg",
+    "project": "delfo",
+    "index": 1,
+    "file": "delfo2.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/brujerias/portadas/014.jpg",
+    "project": "brujerias",
+    "index": 7,
+    "file": "brujerias8.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/portadas/015.jpg",
+    "project": "las-cosas-que-perdimos-en-el-fuego",
+    "index": 5,
+    "file": "TP2 - ENTREGA - 5 - Paz Colotto .jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/sociales": [
@@ -5466,15 +5573,6 @@ window.SITE_CONTENT = {
     "file": "1.jpg",
     "w": 1100,
     "h": 733
-   },
-   {
-    "type": "image",
-    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/003.jpg",
-    "project": "lisandro-alonso",
-    "index": 1,
-    "file": "02_Prensa_Web.jpg",
-    "w": 1100,
-    "h": 618
    },
    {
     "type": "image",
@@ -5673,6 +5771,114 @@ window.SITE_CONTENT = {
     "file": "KABUKI_RAMIREZ144.jpg",
     "w": 1100,
     "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/bafweek/portadas/026.jpg",
+    "project": "bafweek",
+    "index": 5,
+    "file": "BAFWEEK_PAZ COLOTTO121.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/027.jpg",
+    "project": "jua-y-gusi",
+    "index": 10,
+    "file": "13_jua&gusi_imprimir01-97.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/028.jpg",
+    "project": "lisandro-alonso",
+    "index": 0,
+    "file": "01_Prensa_Web.jpg",
+    "w": 618,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/irrefrenable/portadas/029.jpg",
+    "project": "irrefrenable",
+    "index": 11,
+    "file": "_MG_8158.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/030.jpg",
+    "project": "jua-y-gusi",
+    "index": 4,
+    "file": "06jua&gusi_imprimir01-70.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-ramirez-de-negro-y-designers/portadas/031.jpg",
+    "project": "kabuki-y-ramirez-de-negro-y-designers",
+    "index": 8,
+    "file": "KABUKI_RAMIREZ96.jpg",
+    "w": 618,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/portadas/032.jpg",
+    "project": "kabuki-y-benitez-emilse",
+    "index": 15,
+    "file": "KABUKI&BENITEZ_BS x Paz Colotto86.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/033.jpg",
+    "project": "jua-y-gusi",
+    "index": 3,
+    "file": "05jua&gusi_imprimir01-45.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/034.jpg",
+    "project": "jua-y-gusi",
+    "index": 12,
+    "file": "15jua&gusi_imprimir01-227.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-ramirez-de-negro-y-designers/portadas/035.jpg",
+    "project": "kabuki-y-ramirez-de-negro-y-designers",
+    "index": 11,
+    "file": "KABUKI_RAMIREZ153.jpg",
+    "w": 1100,
+    "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/036.jpg",
+    "project": "lisandro-alonso",
+    "index": 1,
+    "file": "02_Prensa_Web.jpg",
+    "w": 1100,
+    "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/portadas/037.jpg",
+    "project": "kabuki-y-benitez-emilse",
+    "index": 4,
+    "file": "KABUKI&BENITEZ_BS x Paz Colotto17.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/marcas": [
@@ -5683,7 +5889,12 @@ window.SITE_CONTENT = {
     "index": 0,
     "file": "01.jpg",
     "w": 1100,
-    "h": 733
+    "h": 733,
+    "banner": {
+     "src": "assets/proyectos/marcas/parlle/portadas/banner.jpg",
+     "w": 2000,
+     "h": 963
+    }
    },
    {
     "type": "image",
@@ -5894,30 +6105,48 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/025.jpg",
-    "project": "finvoi",
+    "src": "assets/proyectos/marcas/make-up-supplies/portadas/028.jpg",
+    "project": "make-up-supplies",
     "index": 0,
-    "file": "FINVOI-22.jpg",
+    "file": "IMG_0027.jpg",
     "w": 1100,
-    "h": 618
+    "h": 1100
    },
    {
     "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/026.jpg",
-    "project": "finvoi",
-    "index": 7,
-    "file": "FINVOI-40.jpg",
+    "src": "assets/proyectos/marcas/astrea/portadas/029.jpg",
+    "project": "astrea",
+    "index": 3,
+    "file": "astrea_4.jpg",
     "w": 1100,
     "h": 733
    },
    {
     "type": "image",
-    "src": "assets/proyectos/marcas/finvoi/portadas/027.jpg",
-    "project": "finvoi",
-    "index": 11,
-    "file": "FINVOI-49.jpg",
+    "src": "assets/proyectos/marcas/clabakery/portadas/030.jpg",
+    "project": "clabakery",
+    "index": 8,
+    "file": "clabakery9.jpg",
     "w": 1100,
-    "h": 618
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/make-up-supplies/portadas/031.jpg",
+    "project": "make-up-supplies",
+    "index": 1,
+    "file": "IMG_0059-2.jpg",
+    "w": 1100,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/ozone-ecommerce/portadas/032.jpg",
+    "project": "ozone-ecommerce",
+    "index": 3,
+    "file": "Mesa de trabajo 21.jpg",
+    "w": 1100,
+    "h": 1100
    }
   ],
   "calle": [
@@ -6010,10 +6239,10 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/calle/hokori/portadas/010.jpg",
+    "src": "assets/calle/hokori/portadas/016.jpg",
     "project": "hokori",
-    "index": 12,
-    "file": "hokori_13.jpg",
+    "index": 34,
+    "file": "orgullo bostero.jpg",
     "w": 1100,
     "h": 733
    },
@@ -6064,10 +6293,10 @@ window.SITE_CONTENT = {
    },
    {
     "type": "image",
-    "src": "assets/calle/hokori/portadas/016.jpg",
+    "src": "assets/calle/hokori/portadas/010.jpg",
     "project": "hokori",
-    "index": 34,
-    "file": "orgullo bostero.jpg",
+    "index": 12,
+    "file": "hokori_13.jpg",
     "w": 1100,
     "h": 733
    },
@@ -6080,6 +6309,61 @@ window.SITE_CONTENT = {
     "project": "lara-breda-y-morena",
     "index": 0,
     "file": "PCINE - Colotto, Paz _presentes (2025) .mp4"
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/nunca-llegamos-al-congreso/portadas/018.jpg",
+    "project": "nunca-llegamos-al-congreso",
+    "index": 0,
+    "file": "ley de tierras-1.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/8m/portadas/019.jpg",
+    "project": "8m",
+    "index": 3,
+    "file": "_MG_8052.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/hokori/portadas/020.jpg",
+    "project": "hokori",
+    "index": 18,
+    "file": "hokori_19.jpg",
+    "w": 1100,
+    "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/8m/portadas/021.jpg",
+    "project": "8m",
+    "index": 11,
+    "file": "_MG_8088.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/calle/nunca-llegamos-al-congreso/portadas/022.jpg",
+    "project": "nunca-llegamos-al-congreso",
+    "index": 6,
+    "file": "ley de tierras-37.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "video",
+    "poster": "assets/calle/ley-de-glaciares/001.jpg",
+    "w": 1920,
+    "h": 1080,
+    "src": "assets/calle/ley-de-glaciares/001-loop.mp4",
+    "project": "ley-de-glaciares",
+    "index": 0,
+    "file": "ley de glaciares.mp4"
    }
   ]
  },
