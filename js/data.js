@@ -49,7 +49,7 @@
       text: { es: ['Retratos a tutores y participantes.'], en: ['Portraits of tutors and participants.'] }
     },
     'charly': {
-      title: 'Doctor Charly García', year: 2025,
+      title: 'doctor charly garcía', year: 2025,
       text: {
         es: ['Fotografía institucional para la Universidad de Buenos Aires. Entrega del Doctor Honoris Causa a Charly García por su trayectoria y su aporte a la cultura. Facultad de Filosofía y Letras, Buenos Aires.'],
         en: ['Institutional photography for the University of Buenos Aires. Honorary Doctorate awarded to Charly García for his career and contribution to culture. Faculty of Philosophy and Letters, Buenos Aires.']
@@ -69,8 +69,8 @@
     'kabuki-y-benitez-emilse': {
       title: 'kabuki & benítez emilse',
       text: {
-        es: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M y Sol Ábrete.\nPelo: Eugenia Grigorevskaia.'],
-        en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M and Sol Ábrete.\nHair: Eugenia Grigorevskaia.']
+        es: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M y Sol Ábrete', 'Pelo: Eugenia Grigorevskaia'],
+        en: ['Key Artist: Jazmin Calcarami - Team make up: Sol Lemonni, Sofia Torres Busquets, Nicole Nielsen, Valentina Recalde, Llankaray Angulo M and Sol Ábrete', 'Hair: Eugenia Grigorevskaia']
       }
     },
     'kabuki-y-ramirez-de-negro-y-designers': {
@@ -142,9 +142,10 @@
       title: 'las vegas', year: 2022,
       text: { es: ['Las Vegas, Febrero de 2022.'], en: ['Las Vegas, February 2022.'] }
     },
-    'mar-azul': { title: 'los dueños de la orilla', year: 2024 },
+    'mar-azul': { title: 'los dueños de la orilla', year: 2024, credits: [[null, 'mar azul']] },
     'mar-del-plata-25': {
       title: 'mar del plata \'25', year: 2025,
+      credits: [[null, { es: 'Parque San Martín en primavera. Mar del Plata.', en: 'Parque San Martín in spring. Mar del Plata.' }]],
       text: { es: ['Parque San Martín en primavera. Mar del Plata.'], en: ['Parque San Martín in spring. Mar del Plata.'] }
     },
     'nyc': { title: 'nueva york (bn)', year: 2022 },
