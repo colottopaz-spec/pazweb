@@ -468,6 +468,7 @@
       'delfo/delfo2.jpg',
       'brujerias/brujerias8.jpg',
       'las-cosas-que-perdimos-en-el-fuego/TP2 - ENTREGA - 5 - Paz Colotto .jpg',
+      'nyc/bcd6c392-bb39-4819-8c98-ba5b1c40bd0b_rw_1920.jpg',
     ],
     // Diario > Viajes
     'diario/viajes': [
@@ -494,9 +495,10 @@
       'las-vegas/IMG_1033.jpg',
       'nyc-en-color/nueva york en color 4.jpg',
       'analogica/000044740009.jpg',
-      'nyc/0369fc17-6f33-4f3a-b10b-013e3d68d2de_rw_1920.jpg',
+      'nyc/bcd6c392-bb39-4819-8c98-ba5b1c40bd0b_rw_1920.jpg',
       'ir-al-norte/ir al norte x paz -740.jpg',
       // Resto: no se ve mientras esté el límite
+      'nyc/0369fc17-6f33-4f3a-b10b-013e3d68d2de_rw_1920.jpg',
       'las-vegas/IMG_1176.jpg',
       'ir-al-norte/ir al norte x paz -777.jpg',
       'analogica/000044740010.jpg',

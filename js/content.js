@@ -5407,6 +5407,15 @@ window.SITE_CONTENT = {
     "file": "06.jpg",
     "w": 1100,
     "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/nyc/portadas/055.jpg",
+    "project": "nyc",
+    "index": 8,
+    "file": "bcd6c392-bb39-4819-8c98-ba5b1c40bd0b_rw_1920.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "diario/personas": [
