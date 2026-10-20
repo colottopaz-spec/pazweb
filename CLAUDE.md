@@ -51,6 +51,7 @@ Claves de unión entre capas: el **slug** (nombre de carpeta/archivo en minúscu
 - Videos de más de 90 s dentro de proyectos se marcan `long: true` y solo tienen un loop de 10 s local; el completo se ve embebido desde Vimeo/YouTube vía `LONG_VIDEO_LINKS`. Lo mismo para la sección video con `VIDEO_META[slug].link`.
 - `EXTRA_VIDEOS` suma tarjetas a la sección video tomando el loop de una pieza del inicio (`fromWelcome`) o de un ítem de proyecto (`fromProject: { slug, itemIndex }`); `itemIndex` tiene que apuntar a un ítem de tipo `video`.
 - Un proyecto sin portada en `covers` no aparece en el muro.
+- Texto de proyecto (`text`): si es un solo párrafo y el pie completo (nombre, créditos, año y texto) tiene hasta `CONFIG.PIE_MAX_CHARS` caracteres en ES y en EN, va directo en el pie; si no, botón "info" con desplegable (`textPlacement` en `app.js`). Sin texto, no hay "info".
 - `CONFIG.SHOW_WRITINGS` en `data.js` oculta la sección "escritos" (hoy `false`).
 
 ### Secciones y rutas

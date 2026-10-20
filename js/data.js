@@ -37,6 +37,13 @@
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
     SECTION_LIMIT: {},
+
+    /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
+       (nombre, créditos, año y texto, con los separadores) tiene hasta este número
+       de caracteres en español y en inglés, el texto va directo en el pie. Si no,
+       queda el botón "info" con el desplegable. 95 caracteres a 18px entran en una
+       línea en desktop (desde 1024px) y en hasta cuatro renglones en un celular de 375px. */
+    PIE_MAX_CHARS: 95,
   };
 
   /* ==========================================================================

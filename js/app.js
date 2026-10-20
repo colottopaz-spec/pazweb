@@ -586,12 +586,37 @@
   }
 
   // Nombre • créditos (si hay) • año (si hay)
+  // Dónde va el texto de un proyecto: 'pie' (corto, directo en el pie), 'info' (largo,
+  // botón con desplegable), 'creditos' (ya figura en los créditos) o 'nada' (sin texto).
+  // La decisión es la misma en los dos idiomas: corto solo si entra en ES y en EN.
+  function textPlacement(p) {
+    if (!p.text) return 'nada';
+    const max = CONFIG.PIE_MAX_CHARS || 95;
+    const pick = (v, lang) => (v && typeof v === 'object' && !Array.isArray(v) ? (v[lang] ?? v.es) : v ?? '');
+    const langs = ['es', 'en'].map((lang) => {
+      const paras = [].concat(pick(p.text, lang));
+      const credits = (p.credits || []).map(([role, value]) => [
+        role ? (typeof role === 'string' ? (UI[lang] && UI[lang]['role.' + role]) || UI.es['role.' + role] || role : pick(role, lang)) : '',
+        pick(value, lang),
+      ]);
+      const inCredits = paras.every((par) => credits.some(([, v]) => v === par));
+      const pieces = [pick(p.title, lang), ...credits.map(([k, v]) => (k ? `${k} ${v}` : v)), p.year ? String(p.year) : '', ...paras].filter(Boolean);
+      const chars = pieces.join('').length + pieces.length - 1;   // con un separador "•" entre piezas
+      return { inCredits, short: paras.length === 1 && chars <= max };
+    });
+    if (langs.every((x) => x.inCredits)) return 'creditos';
+    return langs.every((x) => x.short) ? 'pie' : 'info';
+  }
+
   function renderLbInfo() {
     const p = state.lb.project;
     if (!p) return;
-    const text = p.text ? L(p.text) : null;
+    const place = textPlacement(p);
+    const text = place === 'info' ? L(p.text) : null;
+    const sep = '<span class="cr-sep" aria-hidden="true">•</span>';
     $('#lb-info').innerHTML = creditLine(L(p.title), p.credits || [], p.year, 'lb-title') +
-      (text ? `<span class="cr-sep" aria-hidden="true">•</span><button type="button" class="lb-btn" data-lb-info aria-controls="lb-text" aria-expanded="${!$('#lb-text').hidden}">${esc(t('info'))}</button>` : '');
+      (place === 'pie' ? `${sep}<span class="cr">${esc(L(p.text)[0])}</span>` : '') +
+      (text ? `${sep}<button type="button" class="lb-btn" data-lb-info aria-controls="lb-text" aria-expanded="${!$('#lb-text').hidden}">${esc(t('info'))}</button>` : '');
     $('#lb-text').innerHTML = text ? text.map((par) => `<p>${esc(par)}</p>`).join('') : '';
     if (!text) $('#lb-text').hidden = true;
     updateCounter();
