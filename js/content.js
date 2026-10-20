@@ -5433,6 +5433,78 @@ window.SITE_CONTENT = {
     "file": "Roll1_00000016.JPG",
     "w": 1100,
     "h": 740
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/mar-azul/portadas/047.jpg",
+    "project": "mar-azul",
+    "index": 2,
+    "file": "mar azul_3.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/brasil/portadas/048.jpg",
+    "project": "brasil",
+    "index": 2,
+    "file": "boipeba3.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/las-vegas/portadas/049.jpg",
+    "project": "las-vegas",
+    "index": 25,
+    "file": "IMG_1650.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/ir-al-norte/portadas/050.jpg",
+    "project": "ir-al-norte",
+    "index": 54,
+    "file": "ir al norte_86.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/ir-al-norte/portadas/051.jpg",
+    "project": "ir-al-norte",
+    "index": 18,
+    "file": "ir al norte_35.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/chile/portadas/052.jpg",
+    "project": "chile",
+    "index": 18,
+    "file": "19.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/las-vegas/portadas/053.jpg",
+    "project": "las-vegas",
+    "index": 3,
+    "file": "IMG_0685.jpg",
+    "w": 1100,
+    "h": 734
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/viajes/chile/portadas/054.jpg",
+    "project": "chile",
+    "index": 5,
+    "file": "06.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "diario/personas": [
@@ -5532,6 +5604,42 @@ window.SITE_CONTENT = {
     "project": "las-cosas-que-perdimos-en-el-fuego",
     "index": 0,
     "file": "21.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/vera-en-la-playa/portadas/012.jpg",
+    "project": "vera-en-la-playa",
+    "index": 1,
+    "file": "9b885267-98ff-4faf-82d2-d739a2b11ab0_rw_1920.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/delfo/portadas/013.jpg",
+    "project": "delfo",
+    "index": 1,
+    "file": "delfo2.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/brujerias/portadas/014.jpg",
+    "project": "brujerias",
+    "index": 7,
+    "file": "brujerias8.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/diario/personas/las-cosas-que-perdimos-en-el-fuego/portadas/015.jpg",
+    "project": "las-cosas-que-perdimos-en-el-fuego",
+    "index": 5,
+    "file": "TP2 - ENTREGA - 5 - Paz Colotto .jpg",
     "w": 1100,
     "h": 733
    }
@@ -5761,6 +5869,60 @@ window.SITE_CONTENT = {
     "file": "KABUKI_RAMIREZ144.jpg",
     "w": 1100,
     "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/bafweek/portadas/026.jpg",
+    "project": "bafweek",
+    "index": 5,
+    "file": "BAFWEEK_PAZ COLOTTO121.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/027.jpg",
+    "project": "jua-y-gusi",
+    "index": 10,
+    "file": "13_jua&gusi_imprimir01-97.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/028.jpg",
+    "project": "lisandro-alonso",
+    "index": 0,
+    "file": "01_Prensa_Web.jpg",
+    "w": 618,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/irrefrenable/portadas/029.jpg",
+    "project": "irrefrenable",
+    "index": 11,
+    "file": "_MG_8158.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/jua-y-gusi/portadas/030.jpg",
+    "project": "jua-y-gusi",
+    "index": 4,
+    "file": "06jua&gusi_imprimir01-70.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-ramirez-de-negro-y-designers/portadas/031.jpg",
+    "project": "kabuki-y-ramirez-de-negro-y-designers",
+    "index": 8,
+    "file": "KABUKI_RAMIREZ96.jpg",
+    "w": 618,
+    "h": 1100
    }
   ],
   "proyectos/marcas": [
@@ -6013,6 +6175,33 @@ window.SITE_CONTENT = {
     "project": "make-up-supplies",
     "index": 0,
     "file": "IMG_0027.jpg",
+    "w": 1100,
+    "h": 1100
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/astrea/portadas/029.jpg",
+    "project": "astrea",
+    "index": 3,
+    "file": "astrea_4.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/clabakery/portadas/030.jpg",
+    "project": "clabakery",
+    "index": 8,
+    "file": "clabakery9.jpg",
+    "w": 1100,
+    "h": 733
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/marcas/make-up-supplies/portadas/031.jpg",
+    "project": "make-up-supplies",
+    "index": 1,
+    "file": "IMG_0059-2.jpg",
     "w": 1100,
     "h": 1100
    }

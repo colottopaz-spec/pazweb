@@ -396,17 +396,16 @@
     const limit = limitFor(route);
     state.cols = cols;
 
-    // Si hay GRID_ORDER para esta sección, ordenar la lista según ese orden
-    const gridOrder = (CONFIG.GRID_ORDER || {})[sectionKey];
+    // Si hay GRID_ORDER para esta sección ('seccion/sub' o 'seccion' para el muro mixto),
+    // ordenar la lista según ese orden
+    const go = CONFIG.GRID_ORDER || {};
+    const gridOrder = go[route.sub ? `${route.section}/${route.sub}` : route.section] || go[sectionKey];
     let columns;
     if (gridOrder && gridOrder.length) {
-      // Reordenar la lista según gridOrder (array de nombres de archivo en orden deseado)
-      const orderMap = new Map(gridOrder.map((file, i) => [file, i]));
-      list = list.slice().sort((a, b) => {
-        const ai = orderMap.has(a.file) ? orderMap.get(a.file) : gridOrder.length + 1000;
-        const bi = orderMap.has(b.file) ? orderMap.get(b.file) : gridOrder.length + 1000;
-        return ai - bi;
-      });
+      // Cada entrada es 'slug/archivo' o solo el nombre de archivo original (campo file)
+      const orderMap = new Map(gridOrder.map((key, i) => [key, i]));
+      const pos = (c) => orderMap.get(`${c.project}/${c.file}`) ?? orderMap.get(c.file) ?? gridOrder.length + 1000;
+      list = list.slice().sort((a, b) => pos(a) - pos(b));
       columns = layoutFixed(list.slice(0, limit), cols);
     } else {
       columns = layoutWall(list, sectionKey, cols, limit);

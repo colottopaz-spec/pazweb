@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Qué es
 
-Portfolio estático de Paz Colotto (fotografía, video, dirección). HTML + CSS + JavaScript vanilla, sin bundler, sin npm, sin tests ni linter. Tailwind se carga por CDN desde `index.html` (solo se usa para la fuente y utilidades sueltas; casi todo el estilo está en `css/styles.css`). Se publica en Vercel por la integración con GitHub: un push a `main` despliega producción y cualquier otra rama genera un preview (protegido por login de Vercel). `.vercelignore` deja afuera `tools/`, `serve.py`, `README.md` y este archivo.
+Portfolio estático de Paz Colotto (fotografía, video, dirección). HTML + CSS + JavaScript vanilla, sin bundler, sin npm, sin tests ni linter. Tailwind se carga por CDN desde `index.html` (solo se usa para la fuente y utilidades sueltas; casi todo el estilo está en `css/styles.css`). Se publica en Vercel por la integración con GitHub: un push a `main` despliega producción y cualquier otra rama genera un preview (protegido por login de Vercel). `.vercelignore` deja afuera `tools/`, `serve.py`, `README.md`, `referencias/` y este archivo.
 
 Los comentarios y textos del código están en castellano; mantener ese idioma.
 
@@ -42,7 +42,7 @@ Todo el contenido pasa por capas que se cargan en orden en `index.html` y se com
 3. **`js/i18n.js` → `window.UI_STRINGS`** — textos de interfaz ES/EN, incluidos los roles de créditos (`role.director`, etc.).
 4. **`js/app.js`** — consume `SITE_DATA` y `UI_STRINGS`. Router por hash, slider del inicio, muros, modales y cambio de idioma.
 
-Claves de unión entre capas: el **slug** (nombre de carpeta/archivo en minúsculas, sin acentos, `-` por espacios, `y` por `&`; ver `slugify` en `build.py`) une `PROJECT_META`, `VIDEO_META`, `CONFIG.VIDEO_ORDER` y `LONG_VIDEO_LINKS` con `content.js`. Una clave que no coincide con un slug real se ignora sin aviso: verificar contra `content.js`. `FEATURED`, `GRID_ORDER` y `WELCOME_POSITION` usan el **nombre de archivo original** tal cual (campo `file` en `content.js`).
+Claves de unión entre capas: el **slug** (nombre de carpeta/archivo en minúsculas, sin acentos, `-` por espacios, `y` por `&`; ver `slugify` en `build.py`) une `PROJECT_META`, `VIDEO_META`, `CONFIG.VIDEO_ORDER` y `LONG_VIDEO_LINKS` con `content.js`. Una clave que no coincide con un slug real se ignora sin aviso: verificar contra `content.js`. `FEATURED` y `WELCOME_POSITION` usan el **nombre de archivo original** tal cual (campo `file` en `content.js`). `GRID_ORDER` usa `'slug/archivo original'` (o solo el archivo si no se repite en el muro): en el muro mixto de proyectos hay nombres repetidos (`01.jpg`, `17.jpg`).
 
 ### Convenciones de datos
 
@@ -60,6 +60,6 @@ Rutas por hash: `#/`, `#/diario/viajes`, `#/diario/personas`, `#/proyectos/socia
 ### Vistas y modales en `app.js`
 
 - `VIEWS[section]` devuelve el HTML de cada ruta; `render()` hace el swap con transición. Cambiar de subcategoría dentro de una misma sección solo reemplaza `#grid`.
-- Muros (`diario`, `proyectos`, `calle`): si la sección tiene `CONFIG.GRID_ORDER`, `layoutFixed` reparte las portadas fila por fila en ese orden (las no listadas van después); si no, `layoutWall` arma un mosaico pseudoaleatorio pero determinista (`seeded` por clave de sección), con las destacadas arriba.
+- Muros (`diario`, `proyectos`, `calle`): si el muro tiene `CONFIG.GRID_ORDER` (clave `'seccion/sub'`, o `'seccion'` para los muros mixtos de diario y proyectos), `layoutFixed` reparte las portadas fila por fila en ese orden (las no listadas van después); si no, `layoutWall` arma un mosaico pseudoaleatorio pero determinista (`seeded` por clave de sección), con las destacadas arriba. Hoy los seis muros de diario y proyectos tienen orden fijo, tomado de las láminas de Paz en `referencias/` (no se publican). `CONFIG.SECTION_LIMIT` corta cualquier muro a sus primeras N portadas.
 - Tres modales con una pila común (`openModal` / `closeModal`, con focus trap): `#lightbox` (carrusel de proyecto, `openProject`), `#videobox` (reproductor, `openVideo`) y `#writingbox` (lector, `openWriting`). Los elementos del DOM de los modales viven en `index.html`, no se generan.
 - Idioma: `state.lang` persiste en `localStorage` (`pc-lang`); `setLang` re-renderiza todo.
