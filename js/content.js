@@ -5861,6 +5861,24 @@ window.SITE_CONTENT = {
     "file": "KABUKI_RAMIREZ153.jpg",
     "w": 1100,
     "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/lisandro-alonso/portadas/036.jpg",
+    "project": "lisandro-alonso",
+    "index": 1,
+    "file": "02_Prensa_Web.jpg",
+    "w": 1100,
+    "h": 618
+   },
+   {
+    "type": "image",
+    "src": "assets/proyectos/sociales/kabuki-y-benitez-emilse/portadas/037.jpg",
+    "project": "kabuki-y-benitez-emilse",
+    "index": 4,
+    "file": "KABUKI&BENITEZ_BS x Paz Colotto17.jpg",
+    "w": 1100,
+    "h": 733
    }
   ],
   "proyectos/marcas": [

@@ -36,7 +36,7 @@
        - Para todos los muros: un número, por ejemplo 6
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
-    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 15, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
+    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 12, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
 
     /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
        (nombre, créditos, año y texto, con los separadores) tiene hasta este número
@@ -322,26 +322,30 @@
       'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
       'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ153.jpg',
+      'lisandro-alonso/02_Prensa_Web.jpg',
+      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto17.jpg',
     ],
     // Proyectos > Sociales
     'proyectos/sociales': [
-      // Se ven 15 (CONFIG.SECTION_LIMIT): las 10 de la lámina (Lisandro Alonso una sola vez, arriba; la vertical de maquillaje cambiada por la 012 horizontal de kabuki & ramírez) y 5 más; a 3 columnas son 5 filas completas
+      // Se ven 12 (CONFIG.SECTION_LIMIT): las 10 de la lámina, con una horizontal del mismo proyecto donde había vertical (Lisandro Alonso 02, kabuki & benítez 17, kabuki & ramírez 012), y Jua & Gusi 004 y 013. Cierra en 2, 3 y 4 columnas
       'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
-      'lisandro-alonso/01_Prensa_Web.jpg',
+      'lisandro-alonso/02_Prensa_Web.jpg',
       'charly/17.jpg',
       'jua-y-gusi/04jua&gusi_imprimir01-43.jpg',
       'irrefrenable/_MG_8158.jpg',
       'jua-y-gusi/06jua&gusi_imprimir01-70.jpg',
-      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto15.jpg',
+      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto17.jpg',
       'mile-quince-anos/IMG_9795.jpg',
       'indio-solari/13.jpg',
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ153.jpg',
-      'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
       'jua-y-gusi/05jua&gusi_imprimir01-45.jpg',
       'jua-y-gusi/15jua&gusi_imprimir01-227.jpg',
+      // Resto: no se ve mientras esté el límite
+      'lisandro-alonso/01_Prensa_Web.jpg',
+      'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto15.jpg',
+      'bafweek/BAFWEEK_PAZ COLOTTO146.jpg',
       'kabuki-y-benitez-emilse/KABUKI&BENITEZ_BS x Paz Colotto86.jpg',
       'indio-solari/28.jpg',
-      // Resto: no se ve mientras esté el límite
       'kabuki-y-ramirez-de-negro-y-designers/KABUKI_RAMIREZ96.jpg',
       'mile-quince-anos/IMG_0034.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO34.jpg',
