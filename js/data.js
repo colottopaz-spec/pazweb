@@ -36,7 +36,7 @@
        - Para todos los muros: un número, por ejemplo 6
        Se muestran las primeras N en el orden de la grilla (destacadas y GRID_ORDER
        incluidos) y la grilla se arma solo con esas. */
-    SECTION_LIMIT: { proyectos: 15, 'proyectos/sociales': 12, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
+    SECTION_LIMIT: { proyectos: 12, 'proyectos/sociales': 12, 'proyectos/marcas': 9, diario: 12, 'diario/viajes': 24 },
 
     /* Texto de los proyectos (text): si es un solo párrafo y el pie completo
        (nombre, créditos, año y texto, con los separadores) tiene hasta este número
@@ -257,7 +257,7 @@
   const GRID_ORDER = {
     // Proyectos (muro mixto: sociales + marcas)
     'proyectos': [
-      // Se ven 15 (CONFIG.SECTION_LIMIT): las 9 de la lámina y 6 elegidas por variedad
+      // Se ven 12 (CONFIG.SECTION_LIMIT): las 9 de la lámina y 3 elegidas por variedad. Cierra en 2, 3 y 4 columnas
       'bafweek/BAFWEEK_PAZ COLOTTO34.jpg',
       'jua-y-gusi/16jua&gusi_imprimir01-142.jpg',
       'bafweek/BAFWEEK_PAZ COLOTTO121.jpg',
@@ -270,10 +270,10 @@
       'maria-t/10.jpg',
       'clabakery/clabakery5.jpg',
       'indio-solari/28.jpg',
+      // Resto: no se ve mientras esté el límite
       'ozone/9545cb71-6111-4cdd-80a5-6eb8c51ef7d9_rw_1920.jpg',
       'charly/17.jpg',
       'mile-quince-anos/IMG_9795.jpg',
-      // Resto: no se ve mientras esté el límite
       'bafweek/BAFWEEK_PAZ COLOTTO-1.jpg',
       'parlle/01.jpg',
       'indio-solari/1.jpg',
